@@ -1,0 +1,5 @@
+Fase 1:
+Cadastro de usu'ario e login funcionando
+    falta: logout, recuperar senha, editar dados do usu'ario
+
+    

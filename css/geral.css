@@ -1,0 +1,459 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, 
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	/*ul, li,
+	margin: 0px;
+	padding: 0px;
+	border: 0px; */
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+	/* font-family: Verdana, Helvetica, Geneva, sans-serif; */
+	-webkit-font-smoothing: subpixel-antialiased;
+	font-size: 1.10rem; 
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /*, "Helvetica Neue", Geneva, sans-serif*/
+
+/*	background: #eff4f5;*/
+}
+
+option, textarea, table, tr, td {
+    font: inherit; 
+    /* font-family: Verdana, Helvetica, Geneva, sans-serif; */
+    /* font-size: 12px; */
+    
+}
+
+input[type=text], input[type=button] {
+    font: inherit; 
+    /*font-family: Verdana, Helvetica, Geneva, sans-serif;*/
+    /*font-size: 12px;*/
+}
+
+/*
+ol, ul {
+	list-style: none;
+}
+
+input[type=text] {
+	font-size: 100%;
+	font-family: Verdana, Helvetica, Geneva, sans-serif;
+}
+input[type=button] {
+	font-size: 110%;
+}
+*/
+input:focus {
+ /*font-size: 12px;*/
+font-weight: bold;
+background: #00ffff;
+}
+
+input[type=button]:focus {
+	background: #00ffff;
+	font-weight: bold;
+	 /*font-size: 12px;*/
+	padding: 5px;
+}
+
+
+
+/*
+ * input[type="button"] {
+    width: 120px;
+    margin-left: 35px;
+    display: block;
+}
+ */
+input[type=button]:hover {
+	background: #00ffff;
+	font-weight: bold;
+}
+
+select[disabled] { color: black; }
+
+input[type="text"]:disabled { color: black; }
+
+blockquote, q {
+	quotes: none;
+}
+
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+h1 { 	font-size: 210%; text-align: center; line-height: 160%; }
+h2 {	font-size: 180%; text-align: center; line-height: 150%; }
+h3 {	font-size: 150%; text-align: center; line-height: 140%; }
+h4 {	font-size: 140%; text-align: center; line-height: 130%; }
+.texth4 {	font-size: 140%; text-align: center; line-height: 130%; }
+h5 {	font-size: 130%; text-align: center; line-height: 120%; }
+h6 {	font-size: 120%; text-align: center; line-height: 110%; }
+
+p {  line-height: 125%;
+}
+
+.plineform {    margin-top: 10px; 
+				margin-bottom:10px; 
+}
+  
+table {
+	border-collapse: collapse;
+	}
+
+tr, td, th {
+	border: 1px solid black;
+	border-collapse: collapse;
+	line-height: 120%;
+	padding: 3px;
+	padding-left:5px;
+		vertical-align: middle;
+	/*font-size: 11px; */
+}
+
+.nowrap {
+	white-space: nowrap;
+	/*white-space: normal; */
+}
+
+tr {
+	border-collapse: collapse;
+}
+
+.tr_middle {
+	vertical-align: middle;
+}
+
+
+
+.tr_top {
+	vertical-align: top;
+}
+
+.td_top {
+	vertical-align:top;
+}
+
+.fundo_cinza_leve {
+		background-color: #d3d3d3;
+		
+	}
+
+.fundo_cinza_light {
+		background-color: #c0c0c0;
+	}
+	
+.fundo_azure {
+		background-color: #f0ffff;
+	}
+
+.fundo_titanium {
+		background-color: #fcfff0;
+	}
+	
+.fundo_lavender {
+		background-color: #fff0f5;
+	}
+	
+.fundo_mistyrose {
+		background-color: #ffe4e1;
+	}	
+
+.fundo_greenpale {
+		background-color: #98fb98;
+	}
+		
+.fundo_greenlime {
+		background-color: #32cd32;
+	}
+	
+.fundo_green {
+		background-color: #00ff00;
+	}	
+			
+.fundo_tomato {
+		background-color: #ff6347;
+}		
+.fundo_mint {
+		background-color: #bdfcc9;
+	}	
+	
+.fundo_antique_white {
+		background-color: #faebd7;
+	}	
+	
+.fundo_cadmium_red {
+		background-color: #ff030d;
+	}
+
+.fundo_goldenpale {
+		background-color: #eee8aa 	;
+	}
+	
+.fundo_goldenrod {
+		background-color: #daa520 	;
+	}	
+	
+.fundo_lemmonchiffon {
+		background-color: #fffacd	;
+	}
+		
+.fundo_peacock {
+		background-color: #33a1c9 	;
+	}	
+	
+.fundo_cobalt {
+		background-color: #3d59ab 	;
+	}		
+	
+.txtright {
+	text-align:right;
+}	
+
+.textarea_padrao {
+	vertical-align: top;
+	font-size: 10px;
+	font: inherit;
+}	
+
+.font_negrito {
+		font-weight: bold;
+	}
+	
+.font_normal {
+		font-weight: normal;
+	}	
+		
+.div_scroll {
+	height: 500px;
+	overflow: scroll;
+	}
+	
+.div_scroll_geral {
+	overflow: scroll;
+}	 
+
+.font140{
+	font-size:140%;
+}
+
+.font125{
+	font-size:125%;
+}
+
+.font110{
+	font-size:110%;
+}
+
+
+.font150{
+	font-size:150%;
+	line-height:150%;
+}
+
+.font200{
+	font-size:200%;
+}
+
+.font300{
+	font-size:300%;
+}
+
+.font400{
+	font-size:400%;
+}
+
+.font500{
+	font-size:500%;
+}
+
+.font600{
+	font-size:600%;
+}
+
+.font700{
+	font-size:700%;
+}
+
+.font90{
+	font-size:90% !important;
+}
+
+.font80{
+	font-size:80% !important;
+}
+
+.font70{
+	font-size:70% !important;
+}
+
+
+.font_monosp {
+	font-family: "Courier New", "Monaco", "monospace";
+}
+
+.font_cadmium_red {
+		color: #ff030d;
+	}
+	
+.font_navy {
+		color: #000080;
+	}
+	
+.font_yellow {
+		color: #ffff00;
+	}	
+
+.btn_not_selected {
+	padding: 5px;
+	background: #e6e6fa;
+	color: black;
+	font-size: 110%;
+	margin: 5px;
+}
+
+.btn_selected {
+	padding: 5px;
+	background: #1e5a94;
+	color: white;
+	font-size: 125%;
+	margin: 5px;
+}
+
+.display_hidden
+{  display: none; }
+
+.display_normal
+{
+	display:inline; 
+  }
+  
+.display_tablecell
+{
+	display:table-cell;
+}  
+
+.display_tablerow
+{
+	display:table-row;
+}
+
+.display_block
+{
+	display:block; 
+  }  
+
+.display_inline_block{
+	display: inline-block;
+	padding: 10px;
+	border: 2px solid black;
+}
+
+.display_inline_semborda{
+	display: inline-block;
+	padding: 1px;
+	border: 0px solid black;
+}
+
+.no_wrap
+{
+	white-space: nowrap;
+}
+
+input[type=button].fundo_cinza_leve {
+	    font: inherit; 
+    font-family: Verdana, Helvetica, Geneva, sans-serif;
+    font-size: 12px;
+}
+
+input[type=button].fundo_mint {
+	    font: inherit; 
+    font-family: Verdana, Helvetica, Geneva, sans-serif;
+    font-size: 12px;
+}
+
+input[type=button].fundo_greenpale {
+	    font: inherit; 
+    font-family: Verdana, Helvetica, Geneva, sans-serif;
+    font-size: 12px;
+}
+
+input[type=button].fundo_tomato {
+	    font: inherit; 
+    font-family: Verdana, Helvetica, Geneva, sans-serif;
+    font-size: 12px;
+}
+
+ul {  text-align: left;}
+
+li {  line-height: 120%; }
+
+
+button.display_hidden {
+	display:none !important;
+}
+
+.img_for_vrf {
+	width: 90%;
+	max-width: 300px;
+	max-height: 300px;
+	min-width: 100px;
+	min-height: 100px;	
+	object-fit: contain;
+}
+
+.img_container {
+	max-width: 400px;
+	max-height: 400px;
+	min-width: 150px;
+	min-height: 150px;	
+	object-fit: contain;
+}
+
+.op_container {
+	width: 55vw;
+	height: 90vh;
+	max-width: 58vw;
+	max-height: 100vh; 
+	border: 1px solid navy;
+	text-align: center;
+}
+
+.op_image {
+	max-width: 100%;
+	max-height: 100%;
+	min-width: 50%;
+	min-height: 50%;
+	object-fit: contain;
+}
+
+.op_edit {
+	height: 100%;
+	min-height: 300px;
+	display: inline-block;
+	vertical-align: middle;
+}
