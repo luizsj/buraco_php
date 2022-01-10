@@ -28,7 +28,20 @@ Study JS and CSS developing a popular card game
             and this will take some precious time at this moment.
     So, I will develop the local structure for users.
     This resource is off-toppic, and will not be detailed.
+    
+1.2.1.1) Register and Login developed
+    This is enough to mantain the logical for now.
+    Resources logout, edit account and forgot password will be implemented later.
 
+1.2.1.2) After Login
+    A logged user have his data saved in Session[user] subarray
+    After Login, will be displayed a start screen
+        that will have various resources
+        which will be developed in future
+        like a ranking of players
+            and last games played
+        and a principal is START NEW GAME
+        
 
 
 

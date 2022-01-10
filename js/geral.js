@@ -1,8 +1,4 @@
-/*
- * key google maps AIzaSyCC_8l45U0Y_BUexUzlOaoW0FEypPydQzQ
- * projeto HomeLessons
- */ 
- 
+
  /*
   $( function() {
     $( "#data01" ).datepicker();
