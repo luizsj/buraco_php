@@ -1,4 +1,7 @@
 <?php
+session_set_cookie_params(["sameSite" => "Strict"]); //none, lax, strict
+session_set_cookie_params(["Secure" => "true"]); //false, true
+session_set_cookie_params(["HttpOnly" => "true"]); //false, true
 session_start();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);

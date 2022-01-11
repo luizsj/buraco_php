@@ -48,6 +48,10 @@ function home_footer(){
 }
 
 function home_navbar() {
+    $username = '';
+    if (isset($_SESSION['user']['username'])) {
+        $username = ': '.$_SESSION['user']['username'];
+    }
     $texto = '
     <div class="container-fluid bg-dark">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -59,7 +63,12 @@ function home_navbar() {
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
             <a class="nav-link active" aria-current="page" href="/buraco_php/">Home</a>
-            <a class="nav-link">Minha Conta</button>
+            <a class="nav-link" id=link_minhaconta>
+                Minha Conta
+                <span id=minhaContaUserName class=\"font_negrito text-primary\">
+                '.$username.'
+                </span>
+            </a>
             <a class="nav-link">Sair</a>
             </div>
         </div>

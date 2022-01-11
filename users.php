@@ -127,9 +127,22 @@ function users_home_page($dados){
     $_SESSION['user']['id_user'] = $dados['id_user'];
     $_SESSION['user']['username'] = $dados['username'];
     $_SESSION['user']['email'] = $dados['email'];
-
-
-    $text = '<h1>usuário '.$_SESSION['user']['username'].' logado, exibir página inicial</h1>';
+    $text = '
+            <h1 class=bg-primary>Bem-vindo '.$_SESSION['user']['username'].'!</h1>
+            <div class="container text-justify">
+            <div class="row">
+                <div class="col m-1 border shadow p-3 bg-body rounded" style="min-width: 300px; max-width:500px;" id=user_new_game>
+                '.user_component_new_game().'
+                </div>
+                <div class="col m-1 border shadow p-3 bg-body rounded" style="min-width: 300px; max-width:500px;" id=user_ranking>
+                '.user_component_ranking().'
+                </div>
+                <div class="col m-1 border shadow p-3 bg-body rounded" style="min-width: 300px; max-width:500px;" id=user_last_games>
+                '.user_component_last_games().'
+                </div>
+            </div>
+            </div>
+            <span class=display_hidden id=txt_username_base>'.$_SESSION['user']['username'].'</span>';
     return $text;
 }
 

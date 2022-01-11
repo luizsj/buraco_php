@@ -40,4 +40,28 @@ function users_component_alert($alert) {
     return $text;
 }
 
+function user_component_ranking() {
+    $text = '<p>Aqui vai um ranking com os 5 primeiros colocados
+                e a posição do usuário atual
+                com o imediato anterior e posterior
+            </p>';
+    return $text;
+}
+
+function user_component_last_games() {
+    $text = '<p>Aqui vai uma lista dos últimos jogos
+                com a pontuação,
+                data e tempo jogado
+            </p>';
+    return $text;
+}
+
+function user_component_new_game() {
+    $text = '<p>Aqui vai um botão para continuar o último jogo suspenso,
+    se houver,
+    e um botão para iniciar um novo jogo
+    </p>';
+    return $text;  
+}
+
 ?>
