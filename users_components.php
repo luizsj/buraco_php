@@ -57,11 +57,25 @@ function user_component_last_games() {
 }
 
 function user_component_new_game() {
-    $text = '<p>Aqui vai um botão para continuar o último jogo suspenso,
-    se houver,
-    e um botão para iniciar um novo jogo
-    </p>';
+    $text = users_component_suspended_game();
+    $text .= '<div class="text-center m-2 border">
+    <p> <button class="btn btn-success m-3 fw-bold">
+        Novo Jogo
+        </button></p>
+    </div>';
     return $text;  
+}
+
+function users_component_suspended_game(){
+    $text = '<div class="text-center m-2 border">
+            <span class="mt-1 fw-bold"> Jogo Pausado </span>
+            <br>Último Lance: dd/mm hh:mm 
+            <p><button class="btn btn-primary">
+                Continuar
+                </button></p>
+            </div>';
+    return $text;
+
 }
 
 ?>

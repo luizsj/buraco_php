@@ -1,0 +1,50 @@
+#area_game {
+    height:88vh;
+    background-color: silver;
+}
+
+#area_game_01 {
+    height: 64vh;
+}
+
+#area_player_4 {
+    height: 100%;
+    background-color: #faebd7;
+}
+
+#area_player_3 {
+    height: 20%;
+    background-color: #33a1c9;
+}
+
+#area_team_robot_games {
+    height: 40%;
+    background-color:#eee8aa;
+}
+
+#area_team_human_games {
+    height: 40%;
+    background-color:#3d59ab;
+}
+
+#area_player_2 {
+    height: 100%;
+    background-color:#faebd7;
+}
+
+#area_game_03 {
+    height: 24vh; 
+}
+
+#area_game_04 {
+    height: 100%; 
+}
+
+#area_player_1 {
+    height: 100%;
+    background-color: #33a1c9;
+}
+
+#area_game_05 {
+    height: 100%; 
+}

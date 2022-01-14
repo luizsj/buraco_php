@@ -131,7 +131,7 @@ function users_home_page($dados){
             <h1 class=bg-primary>Bem-vindo '.$_SESSION['user']['username'].'!</h1>
             <div class="container text-justify">
             <div class="row">
-                <div class="col m-1 border shadow p-3 bg-body rounded" style="min-width: 300px; max-width:500px;" id=user_new_game>
+                <div class="col m-1 border shadow p-3 bg-body rounded" style="min-width: 200px; max-width:300px;" id=user_new_game>
                 '.user_component_new_game().'
                 </div>
                 <div class="col m-1 border shadow p-3 bg-body rounded" style="min-width: 300px; max-width:500px;" id=user_ranking>
