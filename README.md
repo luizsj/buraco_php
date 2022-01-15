@@ -106,7 +106,8 @@ Meio: desenvolver um jogo de baralho clássico
     Além disso há "eventos" que somam ou subtraem pontos
         no cálculo final da rodada
 
-### 2.2.1) Quando uma rodada é iniciada, as cartas ficam divididas em
+### 2.2.1) Cartas iniciais
+    Quando uma rodada é iniciada, as cartas ficam divididas em
     a) 11 para cada jogador (cartas "na mão")
     b) 2 grupos de 11 separados virados para baixo
             estes são os "mortos", 
@@ -116,7 +117,7 @@ Meio: desenvolver um jogo de baralho clássico
     d) ao lado do "monte" é a área de descarte, ou "lixo"
 
 ## 2.3) Rascunho de Objetos para Controle
-
+```
 Jogo tem
     2 Times, cada um tem
         2 Jogadores cada, que tem
@@ -152,6 +153,7 @@ Jogo tem
             11 cartas cada
         1 Lixo
             conjunto de cartas descartadas
+```
 
 ## 2.4) divisão FrontEnd - Backend
     Javascript no frontend executa as chamadas
