@@ -10,7 +10,7 @@ Meio: desenvolver um jogo de baralho clássico
 
 ### 1.1.1) Backend Inicial
     Index.php é responsável por criar um home-page simples
-        chamando uma funçao do screen.php
+        chamando uma funçao do home.php
         que retorna um html básico, com os links para arquivos CSS e JS.
     Index.php também declara os requires para os arquivos php adicionais.
     Será usado Bootstrap para um mínimo de layout
@@ -39,11 +39,11 @@ Meio: desenvolver um jogo de baralho clássico
         serão implementados no futuro.
 
 #### 1.2.1.2) Depois do Login
-    Um usuário logado tem seu dados salves em uma sessão.
+    Um usuário logado tem seu dados salvos em uma sessão.
     Depois do login, será exibida uma tela inicial
         que terá vários recursos no futuro
         por enquanto só a marcação de local com um texto
-        como um ranking de jogado e a lista dos últimos jogos do usuário
+        como um ranking de jogadores e a lista dos últimos jogos do usuário
     Os recursos iniciais e mais importantes agora são
         Iniciar um Novo Jogo
         Continuar um jogo suspenso (quando houver)
@@ -53,24 +53,20 @@ Meio: desenvolver um jogo de baralho clássico
 ## 2.1) Design da Mesa
 
 ### 2.1.1) Layout Básico de Tela
-    Haverá 4 ou 6 jogadores, definidos ao iniciar um jogo novo,
-    e o layout da tela e a lógica do jogo precisam se adaptar a essas 2 possibilidades.
-    Cada jogo tem 2 times.
-    Como é para apenas um humano, o time do usuário terá mais 1 ou 2 robôs
-        E o próprio usuário sempre será o líder do seu time
-    O time adversário terá 2 ou 3 robôs e 1 deles será o líder desse time.
+    Cada jogo tem 4 jogadores divididos em 2 times
+        - time Humano: usuário logado + robô
+        - time Robô: 2 robôs.
+    *futuro* implementar para 6 jogadores ?
 
+    Os jogadores de cada time ficam frente a frente na mesa.
     Cada jogador tem sua própria área da mesa
         , onde são exibidas suas cartas viradas para baixo.
-    O líder humano está sempre com a área central inferior.
-        As cartas do líder humano estão sempre viradas para cima, 
+    O jogador humano está sempre com a área central inferior.
+        e suas cartas estão sempre viradas para cima, 
             para que ela possa analisar suas opções o tempo todo.
-    O líder robô está sempre com a área central superior.
-    Os demais ficam com as laterais.
 
-    À frente de cada líder, fica a area para exibir os jogos baixados
-        normalmente seriam colunas e haveria de 0 a 12,
-        mas podem ter mais.
+    No centro da mesa, ficam as 2 áreas para cada time
+        baixar suas colunas de jogos.
     Também é necessário reservar mais 2 áreas pequenas:
         - área para os dois "mortos"
         - área para as cartas disponíveis para comprar
@@ -88,13 +84,12 @@ Meio: desenvolver um jogo de baralho clássico
 ### 2.1.3) Pausa para fazer testes
     a) rascunhar diagramas
         a.1) 4 jogadores, paisagem 1920x1080
-        a.2) 4 jogadores, retrato 1020x180
-        a.3) 6 jogadores, paisagem 1920,1080
+        a.2) 4 jogadores, retrato 1080x1920
 
     b) desenvolver rascunho layout html+css
         b.1) usando as tags do bootstrap e mais css adicional
         b.2) usando divs flexbox
-        b.3) usando css grid
+        b.3) usando *css grid*
     c) conclusão: todos servem, mas css grid é um código mais claro
 
 
