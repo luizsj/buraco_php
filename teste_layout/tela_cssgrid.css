@@ -1,0 +1,63 @@
+#area_game {
+    height:94vh;
+    width:100%;
+    background-color: silver;
+    display: grid;
+    grid-template-rows: 64fr 24fr;
+    grid-template-columns: 15fr 70fr 15fr;
+    grid-column-gap: 3px;
+    grid-row-gap: 3px;
+}
+
+
+#area_player_4 {
+    background-color: #faebd7;
+    border: 1px solid black;
+    padding: 1px;
+}
+
+#area_game_02 {
+    display: grid;
+    grid-template-rows: 2fr 4fr 4fr;
+    grid-row-gap: 3px;
+}
+
+#area_player_3 {
+    background-color: #33a1c9;
+    border: 1px solid black;
+    padding: 1px;
+}
+
+#area_team_robot_games {
+    background-color:#eee8aa;
+    border: 1px solid black;
+    padding: 1px;
+}
+
+#area_team_human_games {
+    background-color:#3d59ab;
+    border: 1px solid black;
+    padding: 1px;
+}
+
+#area_player_2 {
+    background-color: #faebd7;
+    border: 1px solid black;
+    padding: 1px;
+}
+
+#area_game_04 {
+    border: 1px solid black;
+    padding: 1px;
+}
+
+#area_player_1 {
+    background-color: #33a1c9;
+    border: 1px solid black;
+    padding: 1px;
+}
+
+#area_game_05 {
+    border: 1px solid black;
+    padding: 1px;
+}

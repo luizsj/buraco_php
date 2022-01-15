@@ -94,7 +94,9 @@ Meio: desenvolver um jogo de baralho clássico
     b) desenvolver rascunho layout html+css
         b.1) usando as tags do bootstrap e mais css adicional
         b.2) usando divs flexbox
-        
+        b.3) usando css grid
+    c) conclusão: todos servem, mas css grid é um código mais claro
+    
 
 
         
