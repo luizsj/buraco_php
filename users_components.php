@@ -59,7 +59,8 @@ function user_component_last_games() {
 function user_component_new_game() {
     $text = users_component_suspended_game();
     $text .= '<div class="text-center m-2 border">
-    <p> <button class="btn btn-success m-3 fw-bold">
+    <p> <button class="btn btn-success m-3 fw-bold"
+            onclick="game_start_new_get_html();">
         Novo Jogo
         </button></p>
     </div>';

@@ -36,20 +36,32 @@ function geral_datepicker_ptbr()
 	showMonthAfterYear: false,
 	yearSuffix: ''};
 }
-		
+
+function geral_ajax_json(url, area_msg, mensagem, fn_posexec, assincrono)
+{	//console.log(url);
+	if (typeof(assincrono) === undefined) {  assincrono = true;}
+	console.log('ajax area '+area_msg+ ' : '+url);
+	area_msg = this.document.getElementById(area_msg);
+    try {
+		objetoxml = geral_ajax_criaXML();
+		area_msg.innerHTML = mensagem;
+		if (posexec == undefined) { posexec = '';}
+		objetoxml.onreadystatechange = function(){
+			if (objetoxml.readyState == 4){
+				fn_posexec(objetoxml.responseText);
+			} else {  
+				area_msg.innerHTML = mensagem + ' (' +objetoxml.readyState+')';
+			}
+		}
+	} catch(err) {
+		console.log(err.message); 
+		console.log('erro chamando de ' + arguments.callee.caller.toString());
+	}	
+		   
+}
+
 function geral_ajax(url, area, campo_foco, posexec, assincrono, dados_post)
-{	if (document.getElementById('area_menu_contexto'))
-		{	
-			if (document.getElementById('area_menu_contexto').innerHTML != "")
-				{	document.getElementById('area_menu_contexto').innerHTML = "";
-					$("#area_menu_contexto").dialog("close");
-				}
-		}
-	if ((!url.includes('sessionid')) && (!url.includes('https://viacep')) && (!url.includes('datetime_server')))
-		{	if (document.getElementById('jsid'))
-				{	url += "&sessionid="+document.getElementById('jsid').value; }
-		}
-	//console.log(url);
+{	//console.log(url);
 	if (typeof(assincrono) === undefined) {  assincrono = true;}
     area = this.document.getElementById(area);
     console.log('ajax area '+area+ ' : '+url);

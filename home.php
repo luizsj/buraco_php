@@ -27,9 +27,12 @@ function home_header() {
 
         <link rel=\"stylesheet\" href=\"css/bootstrap/reboot_my_defaults.css".$vjs."\" />
         <link rel=\"stylesheet\" href=\"css/geral.css".$vjs."\" />
+        <link rel=\"stylesheet\" href=\"css/game_layout.css".$vjs."\" />
         <script type=\"text/javascript\" src=\"js/geral.js".$vjs."\"></script> 
-        <script type=\"text/javascript\" src=\"js/users.js".$vjs."\"\"></script>
- 
+        <script type=\"text/javascript\" src=\"js/users.js".$vjs."\"></script>
+        <script type=\"text/javascript\" src=\"js/game.js".$vjs."\"></script>
+        <script type=\"text/javascript\" src=\"js/game_anime.js".$vjs."\"></script>
+        <script type=\"text/javascript\" src=\"js/game_validate.js".$vjs."\"></script>
         
         <title>Buraco Araucária</title>
         <base target=\"_self\" />

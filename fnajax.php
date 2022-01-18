@@ -9,6 +9,7 @@ global $fns;
                 , 'users_new_save'
                 , 'users_forgot_pass'
                 , 'users_forgot_pass_send'
+                , 'game_start_new_get_html'
                 );
 }
 

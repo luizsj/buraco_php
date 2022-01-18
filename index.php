@@ -13,6 +13,7 @@ include('bd/bd.php');
 include('geral.php');
 include('users.php');
 include('fnajax.php');
+include('game_layout.php');
 
 if (!isset($_GET['fnajax'])) {
     include('home.php');

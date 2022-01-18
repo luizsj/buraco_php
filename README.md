@@ -169,7 +169,7 @@ Jogo tem
     Esse controle fica com o back-end
         que recebe as requisições, manipula os objetos
         e devolve um json para o front-end
-        com os dados que deve ser feito
+        com os dados do que deve ser feito
     No caso do jogador 1 (humano)
         javascript precisa saber a sequencia de cartas
         para fazer a exibição com as faces para cima
@@ -236,6 +236,44 @@ Jogo tem
         - sequência de cartas no monte e nos mortos
         - valores das cartas dos robôs
         - valores das cartas no lixo
+
+
+# 4) Desenvolvimento        
+
+## 4.1) Divagações
+    O controle do jogo pode ser feito em um conjunto à parte
+        de arquivos php no servidor ?
+    Isso porque qualquer arquivo no servidor tem acesso à sessão
+        não precisa chamar sempre o index.php ?
+    Poderia facilitar o retorno com json's simples
+        quanto não for necessário devolver conteúdo html
+    Tentar fazer dessa forma nas próximas requisições após devolver o html da área de jogo
+
+## 4.2) Questão das imagens
+    Tem que escolher imagens free para as cartas
+        - precisa de uma imagem para cada naipe/valor de face
+        - e uma imagem para coringa
+        - e uma imagem para carta "virada para baixo"
+    Precisa ser um conjunto de imagens gratuitas
+        para não ter problemas com copyright
+    Não consegui encontrar um conjunto gratuito,
+        então criei as minhas próprias.
+    Não é nenhuma maravilha, mas vai servir para os testes.
+
+## 4.3) Iniciando
+
+### 4.3.1) Botão de Start
+    o botão Iniciar novo Jogo chama um ajax que devolve o html da tela de jogo
+    Hora de admitir minha total falta de jeito com jogo de cores.
+    Deixa do jeito que está e depois testa alguma coisa diferente
+    Tons de azul para o Team-Human e tons de salmão para o Team-Robot
+
+#### 4.3.1.1) Inicializar o Jogo no servidor
+    Recebido o html da tela, JS chama uma url de inicializar o jogo
+        que vai devolver um json
+    Então precisa alterar a função geral_ajax para comportar isso
+        
+
 
 
 
