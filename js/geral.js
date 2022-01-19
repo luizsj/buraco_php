@@ -37,22 +37,38 @@ function geral_datepicker_ptbr()
 	yearSuffix: ''};
 }
 
+function geral_is_valid_json(str) {
+	if ( /^\s*$/.test(str) ) return false;
+    str = str.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, '@');
+    str = str.replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']');
+    str = str.replace(/(?:^|:|,)(?:\s*\[)+/g, '');
+    return (/^[\],:{}\s]*$/).test(str);
+}
+
 function geral_ajax_json(url, area_msg, mensagem, fn_posexec, assincrono)
 {	//console.log(url);
 	if (typeof(assincrono) === undefined) {  assincrono = true;}
 	console.log('ajax area '+area_msg+ ' : '+url);
 	area_msg = this.document.getElementById(area_msg);
     try {
-		objetoxml = geral_ajax_criaXML();
+		let objetoxml = geral_ajax_criaXML();
+		objetoxml.open("GET", url, assincrono);
 		area_msg.innerHTML = mensagem;
-		if (posexec == undefined) { posexec = '';}
+		if (fn_posexec == undefined) { fn_posexec = '';}
 		objetoxml.onreadystatechange = function(){
 			if (objetoxml.readyState == 4){
-				fn_posexec(objetoxml.responseText);
+				area_msg.innerHTML = '';
+				let resposta = objetoxml.responseText;
+				if (geral_is_valid_json(resposta)){
+					fn_posexec(resposta);
+				} else {
+					console.log(' Json Inválido! |'+resposta+'|');
+				}
 			} else {  
 				area_msg.innerHTML = mensagem + ' (' +objetoxml.readyState+')';
 			}
 		}
+		objetoxml.send(null);
 	} catch(err) {
 		console.log(err.message); 
 		console.log('erro chamando de ' + arguments.callee.caller.toString());

@@ -272,7 +272,23 @@ Jogo tem
     Recebido o html da tela, JS chama uma url de inicializar o jogo
         que vai devolver um json
     Então precisa alterar a função geral_ajax para comportar isso
-        
+    OK função para tratar ajax que recebe json na resposta.
+    OK game.php inicial para chamar o que foi passado na requisição,
+        e devolver um json, se a resposta da chamada for um array
+
+    Agora tratar a inicialização do jogo.
+    A função é game_start_round
+        porque vai ser chamada para iniciar qualquer rodada.
+    Se tem um subarray game setado na session,
+        então ele deve ter um id de jogo
+    Se não tem, significa que não tem nenhum jogo iniciado,
+        e precisa iniciar um novo.
+    Primeiro, gera um id de jogo no banco de dados,
+        associado ao id do usuário, e com uma data de início
+    Inicialmente, para testar o retorno, somente devolver os dados do jogo
+        e não salvar no banco dados
+    Até aqui: está gerando um json de cartas embaralhadas correntamente
+    
 
 
 
