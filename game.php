@@ -20,7 +20,7 @@ if (!isset($_GET['fnajax'])) {
     $function_to_call = $_GET['fnajax'];
     if (function_exists($function_to_call)) {
         $result = $function_to_call();
-        
+        //o retorno deve ser sempre um array
         header("Content-Type: application/json");
         if (is_array($result)){
             $json = json_encode($result);
@@ -42,14 +42,36 @@ if (!isset($_GET['fnajax'])) {
     }
 }
 
+function game_extract_status($round_status) {
+
+}
+
 function game_round_start(){
     if (!isset($_SESSION['game']['id'])) {
-        //$game_id = game_bd_game_start_new();
-        //$round_id = game_bd_round_start_new($game_id);
-        $round_status = game_round_start_object();
-        //$_SESSION['game']['id'] = $game_id;
-        //$_SESSION['game']['round_id'] = $round_id;
+        $game_id = game_bd_game_start_new();
+        $_SESSION['game']['id'] = $game_id;
+    } else {
+        $game_id = $_SESSION['game']['id'];
     }
+    $its_ok = false;
+    if (!isset($_SESSION['game']['round_id'])) {
+        $round_id = game_bd_get_round_this_game($game_id);
+        if ($round_id == 0) {
+            $round_id = 1;
+            $round_status = game_round_start_object();
+            game_bd_round_start_new($game_id, $round_id, $round_status);
+            $its_ok = true;
+        } 
+        $_SESSION['game']['round_id'] = $round_id;
+    } else {
+        $round_id = $_SESSION['game']['round_id'];
+    }
+
+    if (!$its_ok) {
+        $round_status = game_bd_get_round_status_last($game_id, $round_id);
+    }
+    $_SESSION['game']['round_status'] = $round_status;
+
     return $round_status;
 }
 
@@ -57,7 +79,23 @@ function game_round_start_object()
 {
     //gera um baralho misturado
     $baralho = game_baralho_start();
-    return $baralho;
+    $distrib = game_baralho_distribuir($baralho);
+    //passa baralho por referência
+    //      então as cartas distribuídas diminuem neste array
+    //e retorna um array com as cartas distribuidas
+    //para os jogadores e para os mortos
+    $dados['baralho'] = $baralho;
+    $dados['distrib'] = $distrib;
+    $dados['garbage']['cards'] = [];
+    $dados['garbage']['closed_until'] = 0;
+    $dados['games']['human'] = [];
+    $dados['games']['robot'] = [];
+    $dados['deadcards']['human']['player'] = 0;
+    $dados['deadcards']['robot']['player'] = 0;
+    $dados['deadcards']['human']['status'] = '';
+    $dados['deadcards']['robot']['status'] = '';
+    $dados['nextplayer'] = random_int(1, 4);
+    return $dados;
 }
 
 ?>

@@ -46,4 +46,15 @@ function game_baralho_embaralhar($base) {
     return $novo;
 }
 
+function game_baralho_distribuir(&$baralho) {
+    $destinos = array('player1', 'player2', 'player3', 'player4', 'morto1', 'morto2');
+    for ($i=0; $i < 11; $i++){
+        for ($d=0; $d < count($destinos); $d++){
+            $destino = $destinos[$d];
+            $lastcard = array_pop($baralho);
+            $distrib[$destino][] = $lastcard;
+        }
+    }
+    return $distrib;
+}
 ?>

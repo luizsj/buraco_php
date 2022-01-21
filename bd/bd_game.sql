@@ -15,6 +15,7 @@ Create Table gamerounds (
     round_id integer,
     created_at timestamp default current_timestamp,
     updated_at timestamp,
+    init_json JSON,
     last_json JSON,
     constraint pk_gameround primary key (game_id, round_id),
     constraint fk_gameround_game foreign key (game_id) references games(id)

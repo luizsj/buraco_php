@@ -288,6 +288,50 @@ Jogo tem
     Inicialmente, para testar o retorno, somente devolver os dados do jogo
         e não salvar no banco dados
     Até aqui: está gerando um json de cartas embaralhadas correntamente
+
+    Agora cria uma matriz que contém
+        - baralho: cartas no "monte";
+        - distrib: cartas em cada jogador e nos mortos;
+        - garbage['cards']: inicia vazio, porque não tem cartas
+        - garbage['closed_until']: inicia '', 
+                        quando for jogado um 3preto ou coringa
+                        muda para o número do jogador que poderá usar
+        - games_human[]: inicia vazio, terá os jogos na mesa do time humano
+        - games_robot[]: inicia vazio, terá os jogos do time robô
+        - deadcards['human']['player']:  0, porque ainda não pegou o morto
+        - deadcards['robot']['player']:  0, porque ainda não pegou o morto
+        - deadcards['human']['status']:  ''
+        - deadcards['robot']['status']:  ''
+        - nextplayer = integer, número de 1 a 4 sorteado para ser o próximo jogador
+            - depois passa a ser sequencial
+        - e isso é tudo que é necessário para distribuir as cartas
+    o json disso precisa ser salvo no banco de dados
+        na tabela da rodada 1
+        para o  caso de o jogo ser reiniciado
+        essa tabela tem que salvar o json inicial da rodada
+        e o json atual a cada jogada antes e depois do usuário
+        não precisa salvar o json atual entre um robô e outro
+        porque em teoria o algoritmo dos robôs vai executar,
+            em cima das mesmas cartas,
+            sempre a mesma jogada
+    Do item acima, o json devolvido para o frontend precisa ter
+        - número de cartas no monte
+        - número de cartas de cada jogador e de cada morto
+        - lista de cartas do usuário
+        - lixo: número de cartas, última carta e status do closed
+        - nextplayer
+        - games_human
+        - games_robot
+        - deadcards
+
+    Primeiro, testar o retorno do json inicial completo,
+        sem salvar no banco de dados
+    se parecer ok, aí faz a gravação no banco de dados
+        e o retorno limitado acima
+
+
+              
+
     
 
 
