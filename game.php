@@ -8,6 +8,8 @@ session_start([
 ]);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
+session_set_cookie_params(86400);
+ini_set('session.gc_maxlifetime', 86400);
 error_reporting(E_ALL);
 
 include('bd/bd.php');
@@ -23,6 +25,8 @@ if (!isset($_GET['fnajax'])) {
         //o retorno deve ser sempre um array
         header("Content-Type: application/json");
         if (is_array($result)){
+            $result = game_extract_status($result);
+            
             $json = json_encode($result);
         } else { $json = false;}
         if ($json === false) {
@@ -42,7 +46,30 @@ if (!isset($_GET['fnajax'])) {
     }
 }
 
-function game_extract_status($round_status) {
+function game_extract_status($dados) {
+/*    $dados['baralho'] = $baralho;
+$dados['distrib'] = $distrib;
+$dados['garbage']['cards'] = [];
+$dados['garbage']['closed_until'] = 0;
+$dados['games']['human'] = [];
+$dados['games']['robot'] = [];
+$dados['deadcards']['human']['player'] = 0;
+$dados['deadcards']['robot']['player'] = 0;
+$dados['deadcards']['human']['status'] = '';
+$dados['deadcards']['robot']['status'] = '';
+$dados['nextplayer'] = random_int(1, 4); */
+    $result['qtbaralho'] = count($dados['baralho']);
+    $result['player1_cards'] = $dados['distrib']['player1'];
+    $result['qtcards']['player2'] = count($dados['distrib']['player2']);
+    $result['qtcards']['player3'] = count($dados['distrib']['player3']);
+    $result['qtcards']['player4'] = count($dados['distrib']['player4']);
+    $result['garbage'] = $dados['garbage'];
+    $result['deadcards'] = $dados['deadcards'];
+    $result['nextplayer'] = $dados['nextplayer'];
+    $result['game_id'] = $_SESSION['game']['id'];
+    $result['round_id'] = $_SESSION['game']['round_id'];
+
+    return $result;
 
 }
 
@@ -72,6 +99,7 @@ function game_round_start(){
     }
     $_SESSION['game']['round_status'] = $round_status;
 
+   
     return $round_status;
 }
 
@@ -95,6 +123,7 @@ function game_round_start_object()
     $dados['deadcards']['human']['status'] = '';
     $dados['deadcards']['robot']['status'] = '';
     $dados['nextplayer'] = random_int(1, 4);
+    $_SESSION['game']['last_status'] = $dados;
     return $dados;
 }
 

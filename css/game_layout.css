@@ -14,6 +14,8 @@
     background-color: #e6f3e2;
     border: 1px solid black;
     padding: 1px;
+    display: grid;
+    grid-template-rows: 1fr 11fr;
 }
 
 #area_game_02 {
@@ -26,7 +28,10 @@
     background-color: #eefbea;
     border: 1px solid black;
     padding: 1px;
+    display: grid;
+    grid-template-columns: 11fr 1fr;
 }
+
 
 #area_team_robot_games {
     background-color: #e6f3e2;
@@ -44,22 +49,115 @@
     background-color: #e6f3e2;
     border: 1px solid black;
     padding: 1px;
+    display: grid;
+    grid-template-rows: 11fr 1fr;
 }
 
 #area_game_04 {
     background-color: #cdf8c0;
     border: 1px solid black;
     padding: 1px;
+    max-height: 24.5vh;
 }
 
 #area_player_1 {
     background-color: #eefbea;
     border: 1px solid black;
     padding: 1px;
+    display: grid;
+    grid-template-columns: 1fr 11fr; 
+    max-height: 24.5vh;   
 }
 
 #area_game_05 {
     background-color: #cdf8c0;
     border: 1px solid black;
     padding: 1px;
+    max-height: 24.5vh;
+}
+
+
+/* PLAYERS AND CARDS */
+
+.robot_lateral {
+    max-width: 90%;
+    max-height: 5.45vh;
+    object-fit: contain;
+}
+
+.img_card_lateral {
+    max-width: 90%;
+    max-height: 5.45vh;
+    object-fit: contain;
+}
+
+.cards_align_center {
+    /*border: 1px solid rgb(235, 231, 11);*/
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.robot_team_human {
+    max-height: 9vh;
+    max-width: 90%;
+    object-fit: contain;
+}
+
+.img_card_team_human {
+    max-height: 9vh;
+    max-width: 90%;
+    object-fit: contain;
+}
+
+.area_monte_geral {
+    height: 24.5vh;
+    padding: 5px;
+}
+
+.area_monte {
+ /*  
+    max-height: 40%;
+    max-width: 40%;
+     max-width: 7.5vw; 
+    */
+    height: 12vh;
+    width: 100%;
+    margin: 2px;
+    padding: 2px;
+    display: flex;
+    border: 2px solid rgb(4, 26, 153);
+    justify-content: center;
+    align-items: center;
+    margin: auto 0;
+}
+
+.area_lixo {
+    border: 2px solid rgb(153, 4, 16);
+    background-color: rgb(218, 221, 213);
+}
+
+* .img_monte {
+    height: auto;
+    max-height: 8vh;
+    margin: 0px;
+    display: block;
+    object-fit: contain;
+}
+
+@media screen and (max-width: 768px) {
+    .img_monte {
+      flex-direction: column;
+      padding: 0;
+    }
+}
+
+* .img_lixo {
+    height: auto;
+    max-height: 8vh;
+    margin: 0px;
+    display: block;
+    
 }

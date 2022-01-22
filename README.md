@@ -314,6 +314,18 @@ Jogo tem
         porque em teoria o algoritmo dos robôs vai executar,
             em cima das mesmas cartas,
             sempre a mesma jogada
+
+
+    Primeiro, testar o retorno do json inicial completo,
+        sem salvar no banco de dados
+    se parecer ok, aí faz a gravação no banco de dados
+        e o retorno limitado acima
+
+    Teste OK, gravação no BD OK
+
+#### 4.3.1.2) Inicializar o Jogo no FrontEnd
+    Do array de dados do game,
+    tem que preparar o que tem que será retornado para o front-end
     Do item acima, o json devolvido para o frontend precisa ter
         - número de cartas no monte
         - número de cartas de cada jogador e de cada morto
@@ -323,11 +335,37 @@ Jogo tem
         - games_human
         - games_robot
         - deadcards
+    Retorno Json para o Frontend ok,
+        tratar exibição no frontend
 
-    Primeiro, testar o retorno do json inicial completo,
-        sem salvar no banco de dados
-    se parecer ok, aí faz a gravação no banco de dados
-        e o retorno limitado acima
+### 4.3.2) Ajuste do frontend 
+
+#### 4.3.2.1) Ícones e espaços
+    Cada área de jogador precisa ter um ícone de identificação
+        e uma div que vai exibir as cartas desse jogador
+    A área do monte precisa estar dividida
+        em duas sub-áreas, com duas imagens de marcação
+            a do monte e a do lixo
+    A área dos mortos também precisa ter a mesma divisão e marcação
+    Deixar os espaços marcados exibindo imagem vazia
+        é útil para depois calcular posicionamento para os novos itens
+
+    Ok, marcações de espaço implementadas.
+    Mais difícil foi a área de monte+lixo e área de mortos.
+        mas google salvou
+
+### 4.3.2.3) Animação da distribuição (next task)
+    Como o front-end recebe os dados do servidor na inicialização do jogo,
+        precisa fazer uma animação para exibir isso no front-end
+        99,99% de certeza de que tenha biblioteca pronta para isso
+        Mas a animação a princípio não é nada alienígena
+            - partindo de posição XY e tamanho HW (do monte)
+            - e tendo a posição XY e tamanho HW (do placeholder destino)
+            - em um tempo total de 0.1s (66cartas = 6.6 segundos)
+            - calcular a distância entre os dois centros
+            - e a cada timeout de 0.001
+            - alterar os dados da imagem para a nova posição
+
 
 
               
