@@ -3,16 +3,16 @@
 function game_anime_start_round(retorno) {
     const places = ['morto1', 'player4', 'player2', 'morto2', 'player3', 'player1'];
     const positions = game_anime_start_get_positions(places);
-    console.log(positions);
+    //console.log(positions);
     const position_base = game_anime_get_positions_item('place_monte');
     
     let i = 1;
     step_move_card = setInterval(()=> {
-        console.log('starting step_mov_card '+i);
+        //console.log('starting step_mov_card '+i);
         game_anime_start_round_cards_to_places(places, positions, position_base, i);
         i++;
         if (i > 11) {
-            console.log('i_controlcard > 11 '); 
+            //console.log('i_controlcard > 11 '); 
             clearInterval(step_move_card); 
             //exit;
         }
@@ -25,12 +25,12 @@ function game_anime_start_round_cards_to_places(places, positions, position_base
     step_move_place = setInterval(()=> {
         place = places[p-1];
         let image_id = place+'_fake_card_'+index_card;
-        console.log('create fake card for '+image_id);
+        //console.log('create fake card for '+image_id);
         const fake_card = game_anime_fake_card_create(position_base, image_id);
         game_anime_fake_card_anime(fake_card, position_base, positions[place]);
         p++;
         if (p > 6) {
-            console.log('indexcard '+index_card+' place ' +place +' >6 '); 
+            //console.log('indexcard '+index_card+' place ' +place +' >6 '); 
             clearInterval(step_move_place);
         } 
     }, 110);
@@ -62,7 +62,7 @@ function game_anime_play_aleatory_sound(group_sound){
     let sound_id = group_sound+'_'+index;
     
     let beat = document.getElementById(sound_id);
-    console.log(sound_id);
+    //console.log(sound_id);
     beat.play();
 }
 function game_anime_step_move(fake_card, source, steps, multiply) {
@@ -99,7 +99,7 @@ function game_anime_start_get_positions() {
 
 function game_anime_get_positions_item(elem_name) {
     const elem_pos = new Object();
-    console.log('get element '+elem_name); 
+    //console.log('get element '+elem_name); 
     const element = document.getElementById(elem_name);
     elem_pos.posX = element.getBoundingClientRect().left;
     elem_pos.posY = element.getBoundingClientRect().top;
