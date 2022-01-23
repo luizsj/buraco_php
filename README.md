@@ -365,6 +365,10 @@ Jogo tem
             - calcular a distância entre os dois centros
             - e a cada timeout de 0.001
             - alterar os dados da imagem para a nova posição
+    Sequência
+        - encontrar posição XY e medidas dos placeholders
+        - teste de posicionar um elemento fake pré-existente no html
+        - criar o elemento fake dinamicamente, usar no teste
 
 
 

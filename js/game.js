@@ -10,11 +10,16 @@ function game_start_round(){
     //recebe o número do primeiro jogador
     let url = "game.php?fnajax=game_round_start";
     //let fn_posexec(json_retorno) => game_anime_start_round(json_retorno);
-    geral_ajax_json(url, 'area_player_1_msg', 'Iniciando Rodada', game_anime_round_start, false);
+    geral_ajax_json(url, 'area_msgs', 'Iniciando Rodada', game_start_round_continue, false);
 }
 
 
-function game_anime_round_start(retorno) {
+function game_start_round_continue(retorno) {
     let dados = JSON.parse(retorno);
-    console.log(dados);
+    console.log(retorno);
+    //animação da distribuição inicial de cartas
+    //é necessário chamar como timeout
+    //para garantir que a tela tenha sido redesenhada
+    //e todos os componentes estejam já em suas posições
+    setTimeout(function(){ game_anime_start_round(retorno); }, 200);
 }
