@@ -88,6 +88,7 @@
 .img_card_lateral {
     max-width: 90%;
     max-height: 5.45vh;
+    display: inline-block;
     object-fit: contain;
 }
 
@@ -95,7 +96,7 @@
     /*border: 1px solid rgb(235, 231, 11);*/
     height: 100%;
     width: 100%;
-    display: flex;
+    display: inline-flex; 
     justify-content: center;
     align-items: center;
 }

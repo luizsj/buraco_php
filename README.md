@@ -369,6 +369,25 @@ Jogo tem
         - encontrar posição XY e medidas dos placeholders
         - teste de posicionar um elemento fake pré-existente no html
         - criar o elemento fake dinamicamente, usar no teste
+        - desenvolver sequencias para todas as 6 cartas X todos os 6 places
+        - integrar sons de distribuição de cartas
+        - ao fim de cada posicionamento, 
+            tratar os fakes e exibições
+                - para os mortos 1 e 2
+                    - se é a primeira carta,
+                        mudar o src da imagem para o verso-folhas.gif
+                    - senão apenas destruir a fake e pronto
+                - para os players 2 a 4
+                    - integrar a fake-card dentro do container
+                - para o player 1
+                    - integrar a fake-card dentro do container
+                        e mudar o src image
+                        para mostrar o valor conforme o que foi recebido
+                        no json de retorno da distribuição de cartas
+                        
+
+
+
 
 
 

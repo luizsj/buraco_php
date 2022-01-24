@@ -16,10 +16,10 @@ function game_start_round(){
 
 function game_start_round_continue(retorno) {
     let dados = JSON.parse(retorno);
-    console.log(retorno);
+    console.log(dados);
     //animação da distribuição inicial de cartas
     //é necessário chamar como timeout
     //para garantir que a tela tenha sido redesenhada
     //e todos os componentes estejam já em suas posições
-    setTimeout(function(){ game_anime_start_round(retorno); }, 200);
+    setTimeout(function(){ game_anime_start_round(dados); }, 500);
 }
