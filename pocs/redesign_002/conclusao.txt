@@ -1,0 +1,42 @@
+partindo do teste001
+onde o problema está somente no player1
+    na construção, para o player1,
+    está criando os imgs com createElement
+    e posicionando como position:absolute
+    
+conclusão:
+    o cálculo até que é aceitável
+    mas ficou absurdamente complexo
+
+    reconstruir tentando
+    copiar do 001 e substituir
+    fazendo uma função especial somente para o 001
+    sortear cartas aleatórias
+        ordenar cartas antes de exibir
+        separando por grupos de valor ignorando o naipe
+    usar agrupamentos com 1 +(n-1)/3
+    ao invés de CreateElement,
+        salvar o heightBaseContainer = measureContainer.Height;
+        gerar html para colocar dentro do div
+            separando os grupos com <span nowrap>grupo</span>
+            para cada carta usar height = heightbaseContainer
+                                width = height/4*2.7
+                                com exceção da primeira de cada grupo
+                                    margin-left = -(width/3)
+        vai quebrar automaticamente
+        e expandir o height do div
+        obter o height do div
+        heightCarta = heightBaseContainer
+        heightActualDiv = height atual do div
+        enquanto o heightActualDiv for maior que o heightBaseContainer
+            {   heightCarta = heightCarta * 0.9;
+                repassa todos os spans
+                e dentro dele todas as cartas
+                    reaplicando height, widths e margin-lefts
+                 heightActualDiv = height atual do div
+            }
+
+
+
+
+

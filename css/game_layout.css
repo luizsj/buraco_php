@@ -5,15 +5,14 @@
     display: grid;
     grid-template-rows: 64fr 24fr;
     grid-template-columns: 15fr 70fr 15fr;
-    grid-column-gap: 2px;
-    grid-row-gap: 2px;
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
 }
 
 
 #area_player_4 {
     background-color: #e6f3e2;
     border: 1px solid black;
-    padding: 1px;
     display: grid;
     grid-template-rows: 1fr 11fr;
 }
@@ -21,13 +20,12 @@
 #area_game_02 {
     display: grid;
     grid-template-rows: 2fr 4fr 4fr;
-    grid-row-gap: 2px;
+    grid-row-gap: 1px;
 }
 
 #area_player_3 {
     background-color: #eefbea;
     border: 1px solid black;
-    padding: 1px;
     display: grid;
     grid-template-columns: 11fr 1fr;
 }
@@ -36,19 +34,16 @@
 #area_team_robot_games {
     background-color: #e6f3e2;
     border: 1px solid #82f45f;
-    padding: 1px;
 }
 
 #area_team_human_games {
     background-color:#eefbea;
     border: 1px solid #82f45f;
-    padding: 1px;
 }
 
 #area_player_2 {
     background-color: #e6f3e2;
     border: 1px solid black;
-    padding: 1px;
     display: grid;
     grid-template-rows: 11fr 1fr;
 }
@@ -56,14 +51,12 @@
 #area_game_04 {
     background-color: #cdf8c0;
     border: 1px solid black;
-    padding: 1px;
     max-height: 24.5vh;
 }
 
 #area_player_1 {
     background-color: #eefbea;
     border: 1px solid black;
-    padding: 1px;
     display: grid;
     grid-template-columns: 1fr 11fr; 
     max-height: 24.5vh;   
@@ -72,7 +65,6 @@
 #area_game_05 {
     background-color: #cdf8c0;
     border: 1px solid black;
-    padding: 1px;
     max-height: 24.5vh;
 }
 
@@ -115,7 +107,7 @@
 
 .area_monte_geral {
     height: 24.5vh;
-    padding: 5px;
+  /*  padding: 5px;*/
 }
 
 .area_monte {
@@ -127,16 +119,15 @@
     height: 12vh;
     width: 100%;
     margin: 2px;
-    padding: 2px;
     display: flex;
-    border: 2px solid rgb(4, 26, 153);
+    border: 1px solid rgb(4, 26, 153);
     justify-content: center;
     align-items: center;
     margin: auto 0;
 }
 
 .area_lixo {
-    border: 2px solid rgb(153, 4, 16);
+    border: 1px solid rgb(153, 4, 16);
     background-color: rgb(218, 221, 213);
 }
 

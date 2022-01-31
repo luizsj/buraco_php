@@ -88,8 +88,9 @@ function game_anime_show_distributed_card(fake_card, place, index_card, p1_card)
         if (place == 'player1') {
             const img_carta = p1_card.face+'-'+p1_card.naipe+'.gif';
             fake_card.src = 'http://localhost/buraco_php/imgs/cards/modelo02/'+img_carta;
-        }   
-        //game_redesign_cards(place);
+        }  
+        try {  game_redesign_cards_in_place(place); }
+        catch(err) {  document.getElementById('area_team_human_games').innerHTML = err.message; }
     }
 }
 

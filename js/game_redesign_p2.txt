@@ -1,0 +1,186 @@
+    Quando for o player 3, que o layout também é horizontal
+    ou o player2e4, que o layout é vertical
+        As cartas serão exibidas viradas para baixo e sobrepostas
+        2 cartas ocupam 1 + 1/3
+        3 cartas ocupam 1 + 2/3
+        4 cartas ocupam 1 + 3/3
+        5 cartas ocupam 1 + 4/3
+        para N cartas, 1 + (n-1)/3
+
+    tem N cartas
+        propCarta = 2.7/4.0 = 0.675;
+        propContainer = (Wcontainer/Hcontainer);
+        propBase = (propContainer/propCarta);
+        
+        fazer nCartas = 1 + (nCartas-1)/3
+
+        e aí a fórmula anterior para calcular nCartas, HCartas e etc 
+        funciona normal
+        e só muda o método de redesenho
+
+        qtlinhas = floor(nCartas/propBase);
+        se qtlinhas = 0 
+            HCarta = HContainer;
+            WCarta = HCarta * propCarta;
+        se qtlinhas = 1
+            WCarta = floor(WContainer/nCartas);
+            HCarta = WCarta / propCarta;
+        senão
+            do {
+                qtlinhas += 1;
+                HCarta = HContainer/qtlinhas;
+                WCarta = HCarta * propCarta
+                maxCartasPorLinha = floor(Wcontainer/WCarta)
+                maxCartasTotal = maxCartasPorLinha*qtlinhas;
+            } while (nCartas <= maxCartas)
+
+            
+
+    testes
+        1207x222
+            propContainer = 5.4369
+            propBase = 8.05
+            de 1 até 8 cartas
+                        , qtlinhas = 0, HCarta = 222H, WCarta = 149W
+            de 9 cartas,  qtlinhas = 1, HCarta = 198H, Wcarta = 134W
+                         até 16 cartas, HCarta = 111H, Wcarta = 75W
+            de 17 cartas, qtlinhas = 2
+                        , HCarta = 111H, WCarta = 75W
+                        , maxCartasPorLinha = 16
+                        , maxCartasTotal = 32
+            em 33 cartas, qtlinhas = 3
+                        , HCarta = 222/3 = 74, WCarta = 49
+                        , maxCartasPorLinha = 24
+                        , maxCartasTotal = 72
+        900x275
+            propContainer = 3.2727
+            propBase = 4.84
+            de 1 até 4 cartas
+                        , qtlinhas = 0, HCarta = 275, WCarta = 185
+            de 5 cartas , qylinhas = 1, HCarta = 266, WCarta = 180
+                        até 9 cartas  , HCarta = 148, Wcarta = 100
+            de 10 cartas, qtlinhas = 2
+                        , HCarta = 137, Wcarta = 92
+                        , MaxCartasPorLinha = 9
+                        , MaxCartasTotal = 18
+            em 19 cartas, qtlinhas = 3
+                        , HCarta = 91, Wcarta = 61
+                        , MaxCartasporLinha = 14
+                        , maxCartasTotal = 42
+            em 43 cartas, qtlinhas = 4
+                        , HCarta = 68, Wcarta = 45
+                        , maxCartasPorLinha = 20
+                        , maxCartasTotal = 80
+        600x275  
+            propContainer = 2.18
+            propBase = 3.23
+            de 1 até 3 cartas
+                        , qtlinhas = 0, HCarta = 275, WCarta = 185
+            de 4 cartas , qylinhas = 1, HCarta = 222, WCarta = 150
+                        até 6 cartas  , HCarta = 148, Wcarta = 100
+            de 7 cartas, qtlinhas = 2
+                        , HCarta = 137, Wcarta = 92
+                        , MaxCartasPorLinha = 6
+                        , MaxCartasTotal = 12
+            em 13 cartas, qtlinhas = 3
+                        , HCarta = 91, Wcarta = 61
+                        , MaxCartasporLinha = 9
+                        , maxCartasTotal = 27
+            em 28 cartas, qtlinhas = 4
+                        , HCarta = 68, Wcarta = 45
+                        , maxCartasPorLinha = 13
+                        , maxCartasTotal = 52
+            em 53 cartas, qtlinhas = 5
+                        , HCarta = 55, WCarta = 37
+                        , maxCartasPorLinha = 16
+                        , maxCartasTotal = 80
+        400 x 275
+            propContainer = 1.45
+            propBase = 2.15
+            de 1 até 2 cartas
+                        , qtlinhas = 0, HCarta = 275, WCarta = 185
+            de 3 cartas , qylinhas = 1, HCarta = 197, WCarta = 133
+                        até 4 cartas  , HCarta = 148, Wcarta = 100
+            de 5 cartas, qtlinhas = 2
+                        , HCarta = 137, Wcarta = 92
+                        , MaxCartasPorLinha = 4
+                        , MaxCartasTotal = 8
+            em 9 cartas, qtlinhas = 3
+                        , HCarta = 91, Wcarta = 61
+                        , MaxCartasporLinha = 6
+                        , maxCartasTotal = 18
+            em 19 cartas, qtlinhas = 4
+                        , HCarta = 68, Wcarta = 45
+                        , maxCartasPorLinha = 8
+                        , maxCartasTotal = 32
+            em 33 cartas, qtlinhas = 5
+                        , HCarta = 55, WCarta = 37
+                        , maxCartasPorLinha = 10
+                        , maxCartasTotal = 50                                                                    
+            em 51 cartas, qtlinhas = 6
+                        , HCarta = 45, WCarta = 30
+                        , maxCartasPorLinha = 13
+                        , maxCartasTotal = 78
+
+        300 x 275
+            propContainer = 1.09
+            propbase = 1.61
+            1Carta , qtlinhas = 0, HCarta = 275, Wcarta = 185
+            2 cartas, qtlinhas = 1,HCarta = 222 Wcarta = 150
+            3 cartas, qlinhas = 2
+                    , HCarta = 137, Wcarta = 92
+                    , maxCartasPorLinha = 3
+                    , maxCartasTotal = 6
+            7 cartas, qtlinhas = 3
+                    , HCarta = 91, Wcarta = 61
+                    , maxCartasPorLinha = 4
+                    , maxCartasTotal = 12
+            13 cartas , qtlinhas = 4
+                    , HCarta == 68, Wcarta = 45
+                    , maxCartasPorLinha = 6
+                    , maxCartasTotal = 24
+            25 cartas, qtlinha = 5
+                    , HCarta = 55, Wcarta = 37
+                    , maxCartasPorLinha = 8
+                    , maxCartasTotal = 40
+            41 cartas, qtlinha = 6
+                    , HCarta = 45, WCarta = 30
+                    , maxCartasPorLinha = 10
+                    , maxCartasTotal = 60
+            61 cartas, qtlinha = 7
+                    , HCarta = 39, WCarta = 26
+                    , maxCartasPorLinha = 11
+                    , maxCartasTotal = 77                 
+
+    Isso acima está ok quando for oplayer 1
+        mostrando sempre as cartas inteiras
+***********************************************************************
+***********************************************************************
+***********************************************************************
+***********************************************************************
+    Quando for o player 3, que o layout também é horizontal
+    ou o player2e4, que o layout é vertical
+        As cartas serão exibidas viradas para baixo e sobrepostas
+        2 cartas ocupam 1 + 1/3
+        3 cartas ocupam 1 + 2/3
+        4 cartas ocupam 1 + 3/3
+        5 cartas ocupam 1 + 4/3
+        para N cartas, 1 + (n-1)/3
+
+        
+
+
+            
+            
+
+
+
+
+
+
+
+            
+            
+
+
+

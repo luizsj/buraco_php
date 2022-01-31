@@ -32,6 +32,7 @@ function home_header() {
         <script type=\"text/javascript\" src=\"js/users.js".$vjs."\"></script>
         <script type=\"text/javascript\" src=\"js/game.js".$vjs."\"></script>
         <script type=\"text/javascript\" src=\"js/game_anime.js".$vjs."\"></script>
+        <script type=\"text/javascript\" src=\"js/game_redesign.js".$vjs."\"></script>
         <script type=\"text/javascript\" src=\"js/game_validate.js".$vjs."\"></script>
         
         <title>Buraco Araucária</title>

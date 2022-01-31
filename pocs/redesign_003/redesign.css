@@ -1,0 +1,10 @@
+.img_nowrap {
+    white-space: nowrap;
+    font-size: 0;
+    border: 1px solid green;
+    display: inline-block;
+}
+
+.cards_vertical {
+    transform: rotate(90deg);
+}

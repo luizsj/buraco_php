@@ -1,0 +1,10 @@
+A fórmula parece estar certa
+
+mas o posicionamento falha em alguns momentos
+para player1 em tela tamanho celular
+a quantidade de itens por linha não bate
+
+para o player3 está ok
+imagens sobrepostas em 1/3 usando margin-left negativa
+
+não entrei nos verticais (player2 e player3)

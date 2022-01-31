@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+    <html lang="pt-br">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Content-Type" content="text/html" />
+    <meta charset="UTF-8">
+    <meta name="language" content="pt-br" />
+    <script type="text/javascript" src="redesign.js" ></script>
+    <script type="text/javascript" src="redesign_card_groups.js" ></script>
+    <script type="text/javascript" src="../../js/game_redesign.js" ></script>
+    <link rel="stylesheet" href="../../css/game_layout.css" />
+</head>
+<body>
+    <div id=area_game>
+        <div id=area_player_4>
+            <div id=area_player4_icons class="cards_align_center  cards_vertical">
+               <img src="../../imgs/players/robot_4.png" class="robot_lateral">
+            </div>
+            <div id=area_player4_cards class="cards_align_center cards_vertical">
+                <img id=place_player4 src="../../imgs/cards/versos/placeholder_lateral.gif" class="img_card_lateral">
+            </div>
+        </div>
+        <div id=area_game_02>
+            <div id=area_player_3>
+                <div id=area_player3_cards class="cards_align_center">
+                    <img id=place_player3 src="../../imgs/cards/versos/placeholder.gif" class="img_card_team_human">
+                </div>
+                <div id=area_player3_icons  class="cards_align_center">
+                    <img src="../../imgs/players/robot_3.png" class="robot_team_human">
+                </div>
+            </div>
+            <div id=area_team_robot_games>
+                area team robot games
+            </div>
+            <div id=area_team_human_games>
+                <p>distribuir cartas: 
+                    <input type=text id=txtNcards size=3>cartas<br>
+                    <button onclick="game_redesign_cards();">
+                        Redesenhar
+                    </button>
+                </p>
+            </div>
+        </div>
+        <div id=area_player_2 >
+            <div id=area_player2_cards class="cards_align_center cards_vertical">
+                <img id=place_player2 src="../../imgs/cards/versos/placeholder_lateral.gif" class="img_card_lateral">
+            </div>
+            <div id=area_player2_icons  class="cards_align_center">
+                <img src="../../imgs/players/robot_2.png" class="robot_lateral">
+            </div>
+        </div>
+
+        <div id=area_game_04 class="area_monte_geral">
+            <div id=area_monte class="area_monte">
+                <img src="../../imgs/cards/versos/monte-folhas_lateral.gif" class="img_monte">
+                <img id=place_monte src="../../imgs/cards/versos/monte-folhas_carta.gif" class="img_monte">
+            </div>
+            <div id=area_lixo class="area_monte">
+                <img  id=place_lixo src="../../imgs/cards/versos/placeholder.gif" class="img_lixo">
+            </div>
+        </div>
+        <div id=area_player_1>
+            <div id=area_player1_icons  class="cards_align_center">
+                <img src="../../imgs/players/user.png" class="robot_team_human"
+                    onclick="redesign_show_player1_height();"
+                >
+            </div>
+            <div id=area_player1_cards class="cards_align_center">
+                <img id=place_player1 src="../../imgs/cards/versos/placeholder.gif" class="img_card_team_human">
+            </div>
+        </div>
+        <div id=area_game_05 class="area_monte_geral">
+            <div id=area_morto1 class="area_monte area_lixo">
+                <img id=place_morto1 src="../../imgs/cards/versos/verso-azul.gif" class="img_lixo">
+            </div>
+            <div id=area_morto2 class="area_monte area_lixo">
+                <img id=place_morto2 src="../../imgs/cards/versos/verso-vermelho.gif" class="img_lixo">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
