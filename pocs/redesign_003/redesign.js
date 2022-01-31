@@ -5,8 +5,8 @@ function game_redesign_cards(){
     //game_redesign_cards_player1(nCards);
     
     //game_redesign_cards_player(nCards, 'player2');
-    game_redesign_cards_player(nCards, 'player3');
-    //game_redesign_cards_player(nCards, 'player4');
+    //game_redesign_cards_player(nCards, 'player3');
+    game_redesign_cards_player_vertical(nCards, 'player4');
     
 }
 
@@ -22,6 +22,36 @@ function game_redesign_cards_player1(nCards) {
     place_div.style.textAlign = 'center';
     place_div.style.verticalAlign = 'middle';
     place_div.innerHTML = game_redesign_card_groups_html(cardGroups, baseHeight, containerW, containerH, 1);
+}
+
+function game_redesign_cards_player_vertical(nCards, player) {
+    let place_div = document.getElementById('area_'+player+'_cards');
+    let measureContainer = game_redesign_get_place_measures(place_div, (2.7/4.0));
+    console.log(measureContainer); 
+    let baseHeight = Math.floor(measureContainer.width*0.95/4*2.7);
+    let containerH = measureContainer.height*0.95;
+    let heightTotal = (Math.floor((1 + (nCards-1)/3))+1) * baseHeight; 
+    let textHtml = ''    ;
+    place_div.classList = '';
+    place_div.style.textAlign = 'center';
+    place_div.style.verticalAlign = 'middle';
+    
+    while (heightTotal > containerH) {
+        baseHeight = Math.floor(baseHeight*0.95);
+        heightTotal = (Math.floor((1 + (nCards-1)/3))+1) * baseHeight; 
+        console.log('containerH: '+containerH+' baseHeight:'+baseHeight+', heightTotal:'+heightTotal);
+    }
+    for (let i=0; i < nCards; i++) {
+        textHtml += '<img src="http://localhost/buraco_php/imgs/cards/versos/verso-folhas-lateral.gif"';
+        textHtml += ' style="height:'+baseHeight+'px;display:inline-block;';
+        if (i > 0) {
+            textHtml += 'margin-top:-'+Math.floor(baseHeight/3*2)+'px;';
+        }
+        textHtml += '"> ';
+
+    }
+    console.log(textHtml);
+    place_div.innerHTML = textHtml;
 }
 
 function game_redesign_cards_player(nCards, place) {
@@ -47,7 +77,8 @@ function game_redesign_cards_player(nCards, place) {
     game_redesign_cards_design(place, nCards, measureCard, measureContainer);
     console.log(measureCard);
     measureContainer = game_redesign_get_place_measures(place_div, measureBase.proportion);
-    console.log(measureContainer);
+    place_div.classList = 'cards_vertical';
+    console.log(place_div);
 }
 
 function game_redesign_cards_design(place, nCards, measureCard, measureContainer) {
@@ -148,10 +179,10 @@ function game_redesign_cards_invert_measures(measureObj) {
 }
 
 function game_redesign_cards_calculate_card(nCards,  measureContainer, measureBase){
-    if (measureContainer.orientation == 'vertical') {
+    /*if (measureContainer.orientation == 'vertical') {
         measureBase = game_redesign_cards_invert_measures(measureBase);
         measureContainer = game_redesign_cards_invert_measures(measureContainer);
-    }
+    }*/
     measureContainer.height = measureContainer.height*0.95;
     measureContainer.width = measureContainer.width*0.95;
     const propCard = measureBase.proportion;
