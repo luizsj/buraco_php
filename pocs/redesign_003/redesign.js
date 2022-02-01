@@ -26,8 +26,8 @@ function game_redesign_cards_player1(nCards) {
 function game_redesign_cards_player_vertical(nCards, player) {
     const area_height = Math.floor((11/12)*0.73*0.90*screen.availHeight);
     document.getElementById('area_'+player+'_cards').innerHTML = '';
-    document.getElementById('area_player4_cards').height = area_height+'px';
-    document.getElementById('area_player2_cards').height = area_height+'px';
+    document.getElementById('area_player4_cards').offsetHeight = area_height+'px';
+    document.getElementById('area_player2_cards').offsetHeight = area_height+'px';
     let place_div = document.getElementById('area_'+player+'_cards');
     //a altura base do player cards 'e
     //  (11/12)*0.73*0.90*screenHeight
@@ -44,10 +44,10 @@ function game_redesign_cards_player_vertical(nCards, player) {
     let baseWidth = Math.floor(baseHeight/2.7*4.0);
     let propWidth = Math.floor(containerW/baseWidth);
     let textHtml = ''    ;
+    
     place_div.classList = '';
     place_div.style.textAlign = 'center';
     place_div.style.verticalAlign = 'middle';
-    place_div.style.fontsize = 0;
     
 
     //questão: as cartas são desenhadas com a base height
@@ -67,6 +67,7 @@ function game_redesign_cards_player_vertical(nCards, player) {
     let passo = 0;
     console.log(' containerW '+containerW);
     console.log('baseWidth '+baseWidth);
+    console.log(' area_height '+area_height);
     console.log('passo '+passo+ ' totalHeight: '+heightTotal+', propWidth: '+propWidth+', baseHeight: '+baseHeight+', containerH:'+containerH);
     while ((heightTotal/propWidth > containerH) ) {
         passo ++;
@@ -81,7 +82,7 @@ function game_redesign_cards_player_vertical(nCards, player) {
     }
     for (let i=0; i < nCards; i++) {
         textHtml += '<img src="../../imgs/cards/versos/verso-folhas-lateral.gif"';
-        textHtml += ' style="width:'+baseWidth+'px;height:'+baseHeight+'px;object-fit:fill;display:inline-block;';
+        textHtml += ' style="width:'+baseWidth+'px;object-fit:contain;display:inline-block;';
         if (i > 0) {
             textHtml += 'margin-top:-'+Math.floor(baseHeight/3*2)+'px;';
         }
@@ -89,7 +90,37 @@ function game_redesign_cards_player_vertical(nCards, player) {
     }
     console.log(textHtml);
     place_div.innerHTML = textHtml;
-    setTimeout(redesign_check_height, 100);d
+    setTimeout(redesign_check_height(player, 1), 300);
+}
+
+function redesign_check_height(player, passo) {
+    const place_div = document.getElementById('area_'+player+'_cards');
+    let measureContainer = game_redesign_get_place_measures(place_div, (2.7/4.0));
+    const containerH = measureContainer.height;
+    const baseH = Math.floor((11/12)*0.73*0.90*(screen.height));
+    console.log('availscreenheight '+screen.availHeight);
+    const proportion = baseH/containerH;
+    const measures = new Object();
+    console.log('passo '+passo+', baseH '+baseH+', containerH '+containerH+ ', proportion '+proportion);
+    if ((proportion < 1) && (passo < 10)) {
+        let itens = place_div.children;
+        for (let i=0; i < itens.length; i++) {
+            item = itens[i];
+            if (i==0) {
+                measures.width = item.style.width.replace('px', '');
+                measures.width = Math.floor(measures.width*proportion)-1;
+                measures.margintop = -(Math.floor(measures.width/4*2.7/3*2));
+                console.log('item '+i+' w:'+measures.width) ;
+            }
+            item.style.width = measures.width + 'px';
+            if (i > 0) {
+                item.style.marginTop = measures.margintop + 'px';
+            }
+        }
+        setTimeout(redesign_check_height(player, passo + 1), 300);
+    }
+    
+
 }
 
 function game_redesign_cards_player(nCards, place) {
