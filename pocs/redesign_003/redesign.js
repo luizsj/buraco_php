@@ -2,10 +2,9 @@ function game_redesign_cards(){
     console.clear;
 
     let nCards = document.getElementById('txtNcards').value;
-    //game_redesign_cards_player1(nCards);
-    
-    //game_redesign_cards_player(nCards, 'player2');
-    //game_redesign_cards_player(nCards, 'player3');
+    game_redesign_cards_player1(nCards);
+    game_redesign_cards_player_vertical(nCards, 'player2');
+    game_redesign_cards_player(nCards, 'player3');
     game_redesign_cards_player_vertical(nCards, 'player4');
     
 }
@@ -25,33 +24,72 @@ function game_redesign_cards_player1(nCards) {
 }
 
 function game_redesign_cards_player_vertical(nCards, player) {
+    const area_height = Math.floor((11/12)*0.73*0.90*screen.availHeight);
+    document.getElementById('area_'+player+'_cards').innerHTML = '';
+    document.getElementById('area_player4_cards').height = area_height+'px';
+    document.getElementById('area_player2_cards').height = area_height+'px';
     let place_div = document.getElementById('area_'+player+'_cards');
+    //a altura base do player cards 'e
+    //  (11/12)*0.73*0.90*screenHeight
     let measureContainer = game_redesign_get_place_measures(place_div, (2.7/4.0));
+    measureContainer.height = area_height;
+
     console.log(measureContainer); 
-    let baseHeight = Math.floor(measureContainer.width*0.95/4*2.7);
+    let baseHeight = Math.floor(measureContainer.width*0.95/4*2.7)-2;
     let containerH = measureContainer.height*0.95;
-    let heightTotal = (Math.floor((1 + (nCards-1)/3))+1) * baseHeight; 
+    let containerW = measureContainer.width*0.95;
+
+    let nCardsShow = Math.floor(1 + (nCards-1)/3) + 2;
+    let heightTotal = Math.floor(nCardsShow * baseHeight); 
+    let baseWidth = Math.floor(baseHeight/2.7*4.0);
+    let propWidth = Math.floor(containerW/baseWidth);
     let textHtml = ''    ;
     place_div.classList = '';
     place_div.style.textAlign = 'center';
     place_div.style.verticalAlign = 'middle';
+    place_div.style.fontsize = 0;
     
-    while (heightTotal > containerH) {
-        baseHeight = Math.floor(baseHeight*0.95);
-        heightTotal = (Math.floor((1 + (nCards-1)/3))+1) * baseHeight; 
-        console.log('containerH: '+containerH+' baseHeight:'+baseHeight+', heightTotal:'+heightTotal);
+
+    //questão: as cartas são desenhadas com a base height
+    //a quebra de coluna é automática 
+    //se medir novamente o container....
+    //cai no mesmo problema do player 1, nao dá pra medir o container
+    //      porque o script está em execução
+    //  então tem que CALCULAR qual seria o tamanho utilizado
+
+    //tendo o baseHeight, sabe o baseWidth
+    //enquanto a proporcao containerW/baseWidth
+    //      for menor que 2
+    //      significa que não cabe duas colunas
+    //      então continuar diminuindo o baseHeight
+    //  quando passar a valer 2
+    //
+    let passo = 0;
+    console.log(' containerW '+containerW);
+    console.log('baseWidth '+baseWidth);
+    console.log('passo '+passo+ ' totalHeight: '+heightTotal+', propWidth: '+propWidth+', baseHeight: '+baseHeight+', containerH:'+containerH);
+    while ((heightTotal/propWidth > containerH) ) {
+        passo ++;
+        baseHeight = Math.floor(baseHeight*0.95)-1;
+        baseWidth  = Math.floor(baseHeight/2.7*4.0)-1;
+        console.log('baseWidth '+baseWidth);
+        propWidth  = Math.floor(containerW/baseWidth);
+        if (propWidth == 0) {  propWidth = 1; }
+        heightTotal = Math.floor(nCardsShow * baseHeight ); 
+        console.log('passo '+passo+ ' totalHeight: '+heightTotal+', propWidth: '+propWidth+', baseHeight: '+baseHeight+', containerH:'+containerH);
+        
     }
     for (let i=0; i < nCards; i++) {
-        textHtml += '<img src="http://localhost/buraco_php/imgs/cards/versos/verso-folhas-lateral.gif"';
-        textHtml += ' style="height:'+baseHeight+'px;display:inline-block;';
+        textHtml += '<img src="../../imgs/cards/versos/verso-folhas-lateral.gif"';
+        textHtml += ' style="width:'+baseWidth+'px;height:'+baseHeight+'px;object-fit:fill;display:inline-block;';
         if (i > 0) {
             textHtml += 'margin-top:-'+Math.floor(baseHeight/3*2)+'px;';
         }
-        textHtml += '"> ';
-
+        textHtml += '">';
     }
     console.log(textHtml);
     place_div.innerHTML = textHtml;
+    setTimeout(redesign_check_height, 100);d
 }
 
 function game_redesign_cards_player(nCards, place) {

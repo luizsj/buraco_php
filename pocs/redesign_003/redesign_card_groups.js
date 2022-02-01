@@ -62,7 +62,7 @@ function game_redesign_card_groups_html(cardGroups, baseHeight, containerW, cont
                 pastaImg = 'modelo02';
             }
             arquivoImg = pastaImg+'/'+value+'-'+naipe+'.gif';
-            textGroup += '<img src="http://localhost/buraco_php/imgs/cards/'+arquivoImg+'"';
+            textGroup += '<img src="../../imgs/cards/'+arquivoImg+'"';
             textGroup += ' id=player1_card_'+countCards;
             styleImg = ' style="height:'+baseHeight+'px;';
             if (j > 0) {

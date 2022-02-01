@@ -3,7 +3,7 @@
     width:100%;
     background-color: #6e9e60;
     display: grid;
-    grid-template-rows: 64fr 24fr;
+    grid-template-rows: 73fr 27fr;
     grid-template-columns: 15fr 70fr 15fr;
     grid-column-gap: 1px;
     grid-row-gap: 1px;
