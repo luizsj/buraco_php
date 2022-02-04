@@ -25,3 +25,13 @@
                     reaplicando height, widths e margin-lefts
                  heightActualDiv = height atual do div
             }
+    CONCLUSÃO
+        dá certo para o 2 e o 4 (verticais)
+        resumo:
+            inserir HTML e depois refazer o tamanhos das imagens
+            de acordo com o tamanho que deveria ser cada div
+            considerando que é 73% (a linha) de 90% (a mesa inteira) do screenHeight
+        Não dá certo quando
+            já tem cartas nos dois players e o div é redesenhado
+
+            

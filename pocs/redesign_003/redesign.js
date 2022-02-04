@@ -89,20 +89,28 @@ function game_redesign_cards_player_vertical(nCards, player) {
         textHtml += '">';
     }
     console.log(textHtml);
+    let otherHTML = document.getElementById('area_player4_cards').innerHTML;
+    let otherPlayer = 'player4';
+    document.getElementById('area_player4_cards').innerHTML = '';
+    if (player == 'player4') {
+        otherHTML = document.getElementById('area_player2_cards').innerHTML;
+        document.getElementById('area_player2_cards').innerHTML = '';
+        otherPlayer = 'player2';
+    }
     place_div.innerHTML = textHtml;
-    setTimeout(redesign_check_height(player, 1), 300);
+    const baseH = Math.floor((11/12)*0.73*0.90*(screen.height));
+    setTimeout(redesign_check_height(player, 1, baseH, 2.7/4.0, otherPlayer, otherHTML), 300);
+
 }
 
-function redesign_check_height(player, passo) {
+function redesign_check_height(player, passo, baseH, base_proportion, otherPlayer, otherHTML) {
     const place_div = document.getElementById('area_'+player+'_cards');
-    let measureContainer = game_redesign_get_place_measures(place_div, (2.7/4.0));
+    let measureContainer = game_redesign_get_place_measures(place_div, base_proportion);
     const containerH = measureContainer.height;
-    const baseH = Math.floor((11/12)*0.73*0.90*(screen.height));
-    console.log('availscreenheight '+screen.availHeight);
     const proportion = baseH/containerH;
     const measures = new Object();
     console.log('passo '+passo+', baseH '+baseH+', containerH '+containerH+ ', proportion '+proportion);
-    if ((proportion < 1) && (passo < 10)) {
+    if ((proportion < 1) && (passo < 20)) {
         let itens = place_div.children;
         for (let i=0; i < itens.length; i++) {
             item = itens[i];
@@ -117,7 +125,9 @@ function redesign_check_height(player, passo) {
                 item.style.marginTop = measures.margintop + 'px';
             }
         }
-        setTimeout(redesign_check_height(player, passo + 1), 300);
+        setTimeout(redesign_check_height(player, passo + 1, baseH, base_proportion, otherPlayer, otherHTML), 300);
+    } else {
+        document.getElementById('area_'+otherPlayer+'_cards').innerHTML = otherHTML;
     }
     
 
