@@ -1,0 +1,12 @@
+    Técnicas que chegou no POC 003 estão ok
+    mas estão com muita sujeira no código
+
+    Sistema precisa de
+    1 algoritmo para o player1
+        que está ok mas precisa trocar
+            o setInterval por setTimeOuts
+    1 algoritmo para o player3
+        porque são cartas que precisam de margin
+        então usar a técnica de gerar HTML inteiro
+            e redesenhar com setTimeOuts
+    1 algoritmo para os players 2 e 3
