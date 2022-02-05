@@ -10,3 +10,29 @@
         então usar a técnica de gerar HTML inteiro
             e redesenhar com setTimeOuts
     1 algoritmo para os players 2 e 3
+
+    Todos os algoritmos vão ser resumir em
+        - cálculo prévio de dimensões para as cartas
+        - gerar o html inicial
+        - calcular o tamanho base que deveria ter o div
+        - definir um setTimeout que recalcula os sizes das cartas
+            e termina setando um novo setTimeOut
+        - o timeOut tem no início uma checagem
+            comparando o tamanho base da Div com o atual
+            só recalcula e chama um novo timeout
+            se der diferença nesse tamanho
+        
+    algoritmo do P1
+        quando no projeto final
+            vai receber do servidor
+                um array de grupos que são arrays de cartas
+                já ordenados por valor de face
+        Neste POC
+            gerar o array ordenado antes de passar para função de desenho
+            chamar a função de desenho
+            que chama o gerador de HTML
+            atribuir ao innerHTML do div
+            define um timeout para checar a altura do div  
+                contra a altura ideal = altura dos containers dos mortos
+        
+

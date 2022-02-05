@@ -1,27 +1,17 @@
 function game_redesign_cards(){
-    console.clear;
-
+    //desenha nCards digitaddo na tela para o player 1
     let nCards = document.getElementById('txtNcards').value;
-    game_redesign_cards_player1(nCards);
-    game_redesign_cards_player_vertical(nCards, 'player2');
-    game_redesign_cards_player(nCards, 'player3');
-    game_redesign_cards_player_vertical(nCards, 'player4');
+    const cardGroups = design_p1_simular_card_groups(nCards);
+    design_p1_redesign(cardGroups);
+
+    //desenha para os outros players
+    //game_redesign_cards_player_vertical(nCards, 'player2');
+    //game_redesign_cards_player(nCards, 'player3');
+    //game_redesign_cards_player_vertical(nCards, 'player4');
     
 }
 
-function game_redesign_cards_player1(nCards) {
-    const cardGroups = game_redesign_card_groups(nCards);
-    let place_div = document.getElementById('area_player1_cards');
-    let measureContainer = game_redesign_get_place_measures(place_div, (2.7/4.0));
-    console.log(measureContainer);
-    let baseHeight = measureContainer.height*0.95;
-    let containerW = measureContainer.width*0.95;
-    let containerH = measureContainer.height*0.95;
-    place_div.classList = '';
-    place_div.style.textAlign = 'center';
-    place_div.style.verticalAlign = 'middle';
-    place_div.innerHTML = game_redesign_card_groups_html(cardGroups, baseHeight, containerW, containerH, 1);
-}
+
 
 function game_redesign_cards_player_vertical(nCards, player) {
     const area_height = Math.floor((11/12)*0.73*0.90*screen.availHeight);

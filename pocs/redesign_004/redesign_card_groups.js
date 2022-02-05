@@ -1,38 +1,3 @@
-function game_redesign_card_groups(nCards) {
-    const values = ['A', 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 2];
-    const objBaralho = game_redesign_card_groups_baralho(values);
-    values.push('C');
-    const myCards = [];
-    let cardGroup = new Object();
-    const listGroups = [];
-    let listNaipes = [];
-    let value = '';
-    let randPosition = 0;
-
-    //console.log(objBaralho);
-    while (myCards.length < nCards) {
-        randPosition = Math.floor(Math.random()*54);
-        myCards.push(objBaralho[randPosition]);
-    }
-    //console.log(myCards);
-    for (let i=0; i < values.length; i++) {
-        value = values[i];
-        cardGroup = new Object();
-        listNaipes = [];
-        for (j=0; j < myCards.length; j++) {
-            if (myCards[j].value == value){
-                listNaipes.push(myCards[j].naipe);
-            }
-        }
-        if (listNaipes.length > 0) {
-            cardGroup.value = value;
-            cardGroup.listNaipes = listNaipes;
-            listGroups.push(cardGroup);
-        }
-    }
-    console.log(listGroups);
-    return listGroups;
-}
 
 function game_redesign_card_groups_html(cardGroups, baseHeight, containerW, containerH, passo) {
     let textGroup = '';
@@ -101,27 +66,4 @@ function game_redesign_card_groups_html(cardGroups, baseHeight, containerW, cont
     }
     //text = '<p style="border:2px solid red;height='+baseHeight+'px;" id=p_p1_cards>'+text+'</p>';
     return text;
-}
-function game_redesign_card_groups_baralho(values) {
-
-    const naipes = ['copas', 'espadas', 'ouros', 'paus'];
-    const baralho = [];
-    for (let i = 0; i < naipes.length; i++) {
-        for (let j=0; j < values.length; j++) {
-            let card = new Object();
-            card.value = values[j];
-            card.naipe = naipes[i];
-            baralho.push(card);
-        }
-        let card = new Object();
-        card.value = 'C';
-        if (i == 0) {
-            card.naipe = 'Vermelho';
-            baralho.push(card);
-        } else if (i == 2) {
-            card.naipe = 'Preto';
-            baralho.push(card);            
-        }
-    }
-    return baralho;
 }

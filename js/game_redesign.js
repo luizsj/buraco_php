@@ -44,10 +44,11 @@ function game_redesign_get_list_cards(element) {
     return visible_imgs;
 }
 
-function game_redesign_get_place_measures(element, base_prop) {
+function game_redesign_get_place_measures(element, redutor) {
     const measures = new Object();
-    measures.width = element.offsetWidth;
-    measures.height = element.offsetHeight;
+    const base_prop = 2.7/4.0;
+    measures.width = element.offsetWidth*redutor;
+    measures.height = element.offsetHeight*redutor;
     measures.posX = element.getBoundingClientRect().left;
     measures.posY = element.getBoundingClientRect().top;    
     measures.orientation = 'horizontal';
