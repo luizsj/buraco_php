@@ -5,8 +5,8 @@ function game_redesign_cards(){
     design_p1_redesign(cardGroups);
 
     //desenha para os outros players
-    //game_redesign_cards_player_vertical(nCards, 'player2');
-    //game_redesign_cards_player(nCards, 'player3');
+    design_vert_redesign(nCards, 'player2');
+    design_p3_redesign(nCards);
     //game_redesign_cards_player_vertical(nCards, 'player4');
     
 }

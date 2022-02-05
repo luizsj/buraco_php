@@ -28,7 +28,7 @@ function design_p1_recheck_size(place_div, baseH, idealH, passo) {
         if (prop < 0.6)
             {   prop = prop * 1.6; }
         console.log('passo '+passo + ', baseH '+baseH+', containerH '+containerH + ', idealH '+idealH+', prop '+prop);
-        if ((prop < 0.99)  ) {
+        if ((prop < 0.99)) {
             newbaseH = Math.floor(baseH*0.9);
             design_p1_card_groups_recalc_height(place_div, newbaseH);
             setTimeout(()=> { design_p1_recheck_size(place_div, newbaseH, idealH, passo +1) }, 100);        
