@@ -2,11 +2,9 @@ function design_vert_redesign(nCards, player) {
     let place_div = document.getElementById('area_'+player+'_cards');
     let measureContainer = game_redesign_get_place_measures(place_div, 0.95);
     console.log(measureContainer);
-    let baseH = measureContainer.height;
+    let baseW = measureContainer.width*0.9;
+    let baseH = Math.floor(baseW/4.0*2.7);
     const idealH = Math.floor((11/12)*0.73*0.90*(screen.availHeight*0.95))
-    if (baseH > idealH) {
-        baseH = idealH;
-    }
     place_div.classList = '';
     place_div.style.textAlign = 'center';
     place_div.style.verticalAlign = 'middle';
@@ -42,31 +40,31 @@ function design_vert_card_groups_recalc_height(place_div, baseH) {
     //pega os elementos internos do div, que são os spans
     //para cada um , pega as imagens internas
     //      e redimensiona
-    const baseW = Math.floor(baseH/4*2.7);
-    const baseML = Math.floor(baseW/3*2);
+    const baseW = Math.floor(baseH/2.7*4.0);
+    const baseMT = Math.floor(baseH/3*2);
     console.log('desenhar HTML : baseH '+(baseH)+', baseW '+baseW );
     const imgs = place_div.children;
     for (let i=0; i < imgs.length; i++) {
         img = imgs[i];
         //console.log('s'+s+'i'+i+':'+img.id);
         img.style.height = baseH+'px';
-        if (img.style.marginLeft != '') {
-            img.style.marginLeft = '-'+baseML+'px';
+        if (img.style.marginTop != '') {
+            img.style.marginTop = '-'+baseMT+'px';
         }
     }
 }
 
 function design_vert_cards_html(nCards, baseH, player) {
     let text = '';
-    const baseW = Math.floor(baseH/4*2.7);
+    const baseW = Math.floor(baseH/2.7*4.0);
     console.log('desenhar HTML inicial: baseH '+(baseH)+', baseW '+baseW );
     for (let i=0; i < nCards; i++) {
-        text += '<img src="../../imgs/cards/versos/verso-folhas.gif"';
+        text += '<img src="../../imgs/cards/versos/verso-folhas-lateral.gif"';
         text += ' id='+player+'_card_'+i;
         text += ' style="height:'+baseH+'px;';
-        // a partir da 2a carta, poe margin-left de forma que exibe só 1/3 da anterior
+        // a partir da 2a carta, poe margin-top de forma que exibe só 1/3 da anterior
         if (i > 0) {
-            text += 'margin-left:-'+Math.floor(baseW/3*2)+'px;';
+            text += 'margin-top:-'+Math.floor(baseH/3*2)+'px;';
         }
         text += '"> ';
         //dconsole.log(text);
