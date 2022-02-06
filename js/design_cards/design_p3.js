@@ -34,7 +34,10 @@ function design_p3_recheck_size(place_div, baseH, idealH, passo) {
             newbaseH = Math.floor(baseH*0.9);
             design_p3_card_groups_recalc_height(place_div, newbaseH);
             setTimeout(()=> { design_p3_recheck_size(place_div, newbaseH, idealH, passo +1) }, 100);        
-        } 
+        } else {
+            document.getElementById('player3_ok').value = "1";
+            game_start_round_check_next_player();
+        }
     }
 }
 

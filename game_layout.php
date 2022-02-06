@@ -62,8 +62,7 @@ function game_start_new_get_html() {
             </div>
         </div>
     </div>
-    <p align=center id=area_msgs></p>
-
+    <div id=area_msgs></div>
     <div class="container font80 mt-3"> 
             <audio id=sound_take_card_0 >
                 <source src="sounds/take_card/f4ngy__card-flip.wav"  type="audio/wav">
@@ -82,6 +81,7 @@ function game_start_new_get_html() {
             </audio>
     </div>   
     <div id=container_fake_card></div>
+    <div id=game_controls></div>
         ';
     echo($texto);
 }

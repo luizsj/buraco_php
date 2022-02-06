@@ -61,7 +61,10 @@ function design_p1_recheck_size(place_div, baseH, idealH, passo) {
             design_p1_card_groups_recalc_height(place_div, newbaseH);
             console.log('after redesign newbaseH '+newbaseH);
             setTimeout(()=> { design_p1_recheck_size(place_div, repass_baseH, idealH, passo +1) }, 100);        
-        } 
+        } else {
+            document.getElementById('player1_ok').value = "1";
+            game_start_round_check_next_player();
+        }
     }
 }
 

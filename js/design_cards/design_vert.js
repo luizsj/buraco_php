@@ -34,9 +34,13 @@ function design_vert_recheck_size(player, place_div, baseH, idealH, passo) {
        // console.log(player + ', passo '+passo + ', baseH '+baseH+', containerH '+containerH + ', idealH '+idealH+', prop '+prop);
         if ((prop < 0.99)) {
             newbaseH = Math.floor(baseH*0.9);
+            const repass_baseH = newbaseH;
             design_vert_card_groups_recalc_height(place_div, newbaseH);
-            setTimeout(()=> { design_vert_recheck_size(player, place_div, newbaseH, idealH, passo +1) }, 100);        
-        } 
+            setTimeout(()=> { design_vert_recheck_size(player, place_div, repass_baseH, idealH, passo +1) }, 100);        
+        } else {
+            document.getElementById(player+'_ok').value = "1";
+            game_start_round_check_next_player();
+        }
     }
 }
 

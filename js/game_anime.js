@@ -2,6 +2,7 @@
 
 function game_anime_start_round(retorno) {
     const places = ['morto1', 'player4', 'player2', 'morto2', 'player3', 'player1'];
+    game_anime_start_round_create_player_markers(retorno.nextplayer);
     const positions = game_anime_start_get_positions(places);
     console.log(positions);
     const position_base = game_anime_get_positions_item('place_monte');
@@ -17,6 +18,15 @@ function game_anime_start_round(retorno) {
             clearInterval(step_move_card); 
         }
     }, 330);    
+}
+
+function game_anime_start_round_create_player_markers(nextPlayer) {
+    const place = document.getElementById('game_controls');
+    place.innerHTML = '<input type=hidden id=player1_ok value=0>'
+                    +'<input type=hidden id=player2_ok value=0>'
+                    +'<input type=hidden id=player3_ok value=0>'
+                    +'<input type=hidden id=player4_ok value=0>'
+                    +'<input type=hidden id=next_player value='+nextPlayer+'>';
 }
 
 function game_anime_start_round_cards_to_places(places, positions, position_base, index_card, player1_cards) {

@@ -30,6 +30,17 @@
     grid-template-columns: 11fr 1fr;
 }
 
+.area_msgs_show {
+    border: 10px solid rgb(144, 9, 161);
+    min-width: 30vw;
+    padding: 20px;
+    position: fixed;
+    top: 40vh;
+    left: 35vw;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 150%;
+}
 
 #area_team_robot_games {
     background-color: #e6f3e2;

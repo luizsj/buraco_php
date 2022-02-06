@@ -415,8 +415,8 @@ Jogo tem
             e salvando o status do jogo no banco
         e no frontend
             está ok a exibição
-            
-### 4.3.4) Pós-exibição
+
+### 4.3.4) Pós-exibição, como começa a jogar?
     O retorno do start-round traz no json um nextplayer = x
         que é o primeiro jogador 
     Após terminar a exibição das cartas, precisa examinar esse valor
@@ -427,13 +427,46 @@ Jogo tem
             para informar que a póxima jogada é dele
             e aguardar interação do usuário com a tela
     Tem um problema aqui:
-        o ajuste de tamanho de carta dos 4 jogadores
+        o ajuste de tamanho de imagem de carta dos 4 jogadores
         está correndo em execução assíncrona por causa dos timeouts
-
-
-
+        e como ocorrem timeouts para todos os 4,
+            como saber quando todos terminaram
+            para poder dar andamento no jogo?
+    Solução:
+        antes de iniciar os ajustes de tamanho
+        criar 4 marcadores em HTML na tela
+            podem ser 4 input hiddens
+        e colocar valor 0 em todos eles
+        depois, em cada função de ajuste de tamanho
+            no final dela (quando não chama mais timeouts)
+            atribuir o valor 1 ao marcador correspondente
+            e chamar uma função de checagem
+            quando a funçõa de checagem encontrar o valor  1
+                em todos os 4 marcadores
+            aí está na hora de dar andamento ao jogo
+        OK, exibindo mensagem na tela indicando o próximo jogador
 
 ## 4.4) Jogando
+    Depois de todo o processo acima, a tela fica parada informando o próximo jogador
+    A mesma função de checagem que exibiu a mensagem
+    pode chamar outra função que vai processar a jogada
+    Se for jogador 2, 3, ou 4
+        - vai trocar a cor de fundo da div do player
+        - vai chamar o servidor para processar a jogada
+        - no lado do servidor
+            - vai decidir comprar morto ou lixo
+            - vai decidir jogadas e descarte
+            - vai decidir nextplayer
+            - salva status no banco de dados
+        - frontend recebe do servidor um json informando
+            - quantas cartas ficaram na mão do jogador
+            - quantas ficaram no monte
+            - lixo: quantas cartas e qual a carta de cima
+                e qual o status, para saber se o próximo jogador
+                pode comprar o lixo ou não
+            - a composição de jogos na mesa do time
+
+
     
 
 
