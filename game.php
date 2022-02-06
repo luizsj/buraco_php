@@ -15,6 +15,7 @@ error_reporting(E_ALL);
 include('bd/bd.php');
 include('bd/game_bd.php');
 include('game_baralho.php');
+include('game_robot.php');
 
 if (!isset($_GET['fnajax'])) {
     echo("<p>Chamada inválida");
@@ -115,7 +116,7 @@ function game_round_start_object()
     $dados['baralho'] = $baralho;
     $dados['distrib'] = $distrib;
     $dados['garbage']['cards'] = [];
-    $dados['garbage']['closed_until'] = 0;
+    $dados['garbage']['closedUntil'] = 0;
     $dados['games']['human'] = [];
     $dados['games']['robot'] = [];
     $dados['deadcards']['human']['player'] = 0;
@@ -127,4 +128,11 @@ function game_round_start_object()
     return $dados;
 }
 
+function game_sort_cards_by_value($cards) {
+    for ($i=0; $i < $cards; $i++) {
+        $card = $cards[$i];
+        $sorted[$card['face']][] = $card['naipe'];
+    }
+    return $sorted;
+}
 ?>

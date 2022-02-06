@@ -32,7 +32,10 @@ function game_start_round_check_next_player() {
     
     if ((p1_ok+p2_ok+p3_ok+p4_ok) == 4) {
         const nextPlayer = document.getElementById('next_player').value;
-        game_show_centered_warning('Próximo Jogador: '+nextPlayer);
+        game_show_centered_warning('N.'+nextPlayer+' está jogando agora');
+        if (nextPlayer != 1) {
+            setTimeout(()=> {game_call_player_robot(nextPlayer);}, 200);
+        }
     } else {
         console.log('p1: '+p1_ok+', p2: '+p2_ok+', p3: '+p3_ok+', p4: '+p4_ok+', soma:'+(p1_ok+p2_ok+p3_ok+p4_ok));
     }
@@ -42,4 +45,15 @@ function game_show_centered_warning(mensagem) {
     const area_msgs = document.getElementById('area_msgs');
     area_msgs.innerHTML = mensagem;
     area_msgs.className = 'area_msgs_show';
+}
+
+function game_call_player_robot(nPlayer) {
+    document.getElementById('area_player_'+nPlayer).style.backgroundColor = '#3c9bff';
+    let url = "game.php?fnajax=game_call_player_robot";
+    //let fn_posexec(json_retorno) => game_anime_start_round(json_retorno);
+    geral_ajax_json(url, 'area_msgs', 'Executando Jogador '+nPlayer, game_call_player_robot_continue, false);
+}
+
+function game_call_player_robot_continue(retorno) {
+    console.log(retorno);
 }

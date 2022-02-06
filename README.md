@@ -465,6 +465,54 @@ Jogo tem
                 e qual o status, para saber se o próximo jogador
                 pode comprar o lixo ou não
             - a composição de jogos na mesa do time
+    Então, após a exibição da mensagem, um setTimeOut chama game_call_player_robot
+    Não passa o número do jogador na chamada, porque isso abre brecha
+        para o usuário executar essa chamada diretamente e passar por cima do jogo
+    Ao invés disso, a função no servidor recupera da Session
+        qual o número do próximo jogador e confere se é um robot (2, 3, 4)
+
+### 4.4.1) Algoritmo de Jogo Robô
+    Primeiro, recupera o nextplayer da sessão
+    Depois, decide o que comprar
+        - define inicialmente como sendo o baralho
+        - se o lixo tiver mais de 1 carta e o playerCards tiver mais de 1 carta
+                    e lixo estiver aberto (closed_until = 0)
+                    ou lixo estiver fechado e o closed_until = player_atual
+            se o player tiver na mão 1 par ou mais de mesmo valor de face da primeira do lixo
+                a "primeira do lixo" é a última do array garbage[cards]
+                então compra o lixo
+        o algoritmo de robô nunca irá pular o lixo se tiver oportunidade de comprar
+            (será? talvez eu coloque mais análises aqui no futuro,
+                como probabilidade de bater se comprar do baralho
+            )
+    Após comprar as cartas e adicioná-las a lista do jogador atual
+        precisa verificar se tem cartas com valor 3 dos naipes ouros ou copas
+        porque cada uma dá direito a comprar mais uma do baralho
+            que pode inclusive ser outro 3 vermelho
+        nesse processo precisa definir que a organização de "jogadas na mesa"
+        vai ter estrutura
+            $_Session['cardsOnTable'][team][valor_face][indice_de_grupo] = [card, card, ...];
+            para cada time, tem valor de face
+            dentro de cada valor de face, pode ter mais de um grupo jogado
+            e cada grupo jogado tem ncartas, cada uma com valro de face e naipe
+            precisa ser com valor de face porque pode ter coringas juntos
+            então não pode ser apenas a lista de naipes daquele valor de face
+    OK, agora tem que decidir quais cartas serão jogadas
+        primeiro, examina os jogos do time na mesa, exceto de 3-vermelho
+        para cada cada grupo dentro de cada valor de face
+            o primeiro grupo sempre é o que tem mais cartas
+                ou igual ao segundo grupo
+                
+            anota a quantidade Q de cartas no grupo
+            SE tem N cartas na mão daquele valor-face
+                se Q >= 7, não faz nada
+                se Q = 6
+                    se N <= 2
+                    joga todas as cartas naquele grupo
+                Se Q = 6
+
+
+
 
 
     
