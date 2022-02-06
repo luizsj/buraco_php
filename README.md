@@ -354,7 +354,7 @@ Jogo tem
     Mais difícil foi a área de monte+lixo e área de mortos.
         mas google salvou
 
-### 4.3.2.3) Animação da distribuição (next task)
+#### 4.3.2.2) Animação da distribuição 
     Como o front-end recebe os dados do servidor na inicialização do jogo,
         precisa fazer uma animação para exibir isso no front-end
         99,99% de certeza de que tenha biblioteca pronta para isso
@@ -384,7 +384,59 @@ Jogo tem
                         e mudar o src image
                         para mostrar o valor conforme o que foi recebido
                         no json de retorno da distribuição de cartas
-                        
+#### 4.3.2.3) Provas de conceito para Redesign                         
+    O número de cartas de cada player irá variar durante o andamento do jogo
+    pode aumentar ou diminuir
+    Ao final de 4 POCs, encontrei uma organização de algoritmo que achoq ue dá pra usar
+        tem um efeito visual de resize leva em média 0.3+8*0.15 = 1,5s
+    Vamos tocar dessa forma
+
+### 4.3.3) Adaptação Cartas Iniciais + Redesign
+    Após a distribuição, as cartas estão sendo exibidas mas estão sem o tamanho ideal
+    Aqui há dois caminhos possíveis:
+        a- chamar o redesign após cada carta ser "entregue para o player"
+        b- chamar o redesign ao final
+    Para o player1, precisa passar o cardGroups
+        um array em que cada item tem o value e um array com os naipes
+        ele pode já vir no Json do start_round
+            mas daí vai dar a impressão para o usuário que as cartas vieram em ordem
+        ou pode ser criado pelo JS, o que é melhor
+            assim são exibidas primeiras na ordem de sorteio
+            e depois são reorganizadas e redimensionadas
+        Nesse caso, tem que ser chamado depois que exibe a última carta de cada player
+            ou seja, no final da função game_anime_show_distributed_card
+            porque senão entra em conflito com a distribuição de cartas
+        Também precisei fazer alguns ajustes nos scripts de design
+            que trouxe da POC 004
+            porque estava dando pane em tela tamanho celular
+    Até aqui, está iniciando ok um novo jogo
+        chamando o start-round no servidor
+            distribuindo as cartas
+            e salvando o status do jogo no banco
+        e no frontend
+            está ok a exibição
+            
+### 4.3.4) Pós-exibição
+    O retorno do start-round traz no json um nextplayer = x
+        que é o primeiro jogador 
+    Após terminar a exibição das cartas, precisa examinar esse valor
+        e, se for player 2, 3, ou 4,
+            fazer uma chamada para o servidor processar a jogada
+        se for player1
+            piscar a tela no player1
+            para informar que a póxima jogada é dele
+            e aguardar interação do usuário com a tela
+    Tem um problema aqui:
+        o ajuste de tamanho de carta dos 4 jogadores
+        está correndo em execução assíncrona por causa dos timeouts
+
+
+
+
+## 4.4) Jogando
+    
+
+
 
 
 

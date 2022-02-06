@@ -34,7 +34,10 @@ function home_header() {
         <script type=\"text/javascript\" src=\"js/game_anime.js".$vjs."\"></script>
         <script type=\"text/javascript\" src=\"js/game_redesign.js".$vjs."\"></script>
         <script type=\"text/javascript\" src=\"js/game_validate.js".$vjs."\"></script>
-        
+        <script type=\"text/javascript\" src=\"js/design_cards/design_p1.js".$vjs."\"></script>        
+        <script type=\"text/javascript\" src=\"js/design_cards/design_p3.js".$vjs."\"></script>        
+        <script type=\"text/javascript\" src=\"js/design_cards/design_vert.js".$vjs."\"></script>        
+
         <title>Buraco Araucária</title>
         <base target=\"_self\" />
     </head>
@@ -49,6 +52,54 @@ function home_footer(){
         </body>
         </html>";
     return $texto;
+    /* colocar isso aqui depois em uma p;ágina de créditos
+       <div class="container font80 mt-3"> 
+        <p class="font_negrito mt-3">
+            Créditos Sounds:
+        </p>
+        <ul class="m-0">
+            <li><audio id=sound_take_card_0 >
+                    <source src="sounds/take_card/f4ngy__card-flip.wav"  type="audio/wav">
+                </audio>
+                <span class="font_negrito mr-2">f4ngy__card-flip.wav</span>
+                    <a href="https://freesound.org/people/f4ngy/sounds/240776/">
+                    https://freesound.org/people/f4ngy/sounds/240776/
+                    </a>
+            </li>
+            <li><audio id=sound_take_card_1 >
+                    <source src="sounds/take_card/johnny2810__card.mp3"  type="audio/mp3">
+                </audio>
+                <span class="font_negrito mr-2">johnny2810__card.mp3</span>
+                    <a href="https://freesound.org/people/Johnny2810/sounds/559531/">
+                    https://freesound.org/people/Johnny2810/sounds/559531/
+                    </a>
+            </li>
+            <li><audio id=sound_take_card_2 >
+                    <source src="sounds/take_card/dersuperanton__taking-card.wav"  type="audio/wav">
+                </audio>
+                <span class="font_negrito mr-2">dersuperanton__taking-card.wav</span>
+                    <a href="https://freesound.org/people/dersuperanton/sounds/434472/">
+                    https://freesound.org/people/dersuperanton/sounds/434472/
+                    </a>
+            </li>
+            <li><audio id=sound_take_card_3 >
+                    <source src="sounds/take_card/paul-sinnett__card.wav"  type="audio/wav">
+                </audio>
+                <span class="font_negrito mr-2">paul-sinnett__card.wav</span>
+                    <a href="https://freesound.org/people/Paul%20Sinnett/sounds/404015/">
+                    https://freesound.org/people/Paul%20Sinnett/sounds/404015/
+                    </a>
+            </li>
+            <li><audio id=sound_take_card_4 >
+                    <source src="sounds/take_card/themfish__slap-cards.wav" type="audio/wav">
+                </audio>
+                <span class="font_negrito mr-2">themfish__slap-cards.wav</span>
+                    <a href="https://freesound.org/people/themfish/sounds/45821/">
+                    https://freesound.org/people/themfish/sounds/45821/
+                    </a>
+            </li>
+        </ul>
+    </div>  */
 }
 
 function home_navbar() {

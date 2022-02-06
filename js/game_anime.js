@@ -10,7 +10,7 @@ function game_anime_start_round(retorno) {
     step_move_card = setInterval(()=> {
         //console.log('starting step_mov_card '+i);
         
-        game_anime_start_round_cards_to_places(places, positions, position_base, i, retorno.player1_cards[i-1]);
+        game_anime_start_round_cards_to_places(places, positions, position_base, i, retorno.player1_cards);
         //game_anime_start_round_cards_to_places(places, positions, position_base, i, 'qualquer coisa');
         i++;
         if (i > 11) {
@@ -19,7 +19,7 @@ function game_anime_start_round(retorno) {
     }, 330);    
 }
 
-function game_anime_start_round_cards_to_places(places, positions, position_base, index_card, p1_card) {
+function game_anime_start_round_cards_to_places(places, positions, position_base, index_card, player1_cards) {
     let p = 1;
     let step_move_place = null ;
     step_move_place = setInterval(()=> {
@@ -27,7 +27,7 @@ function game_anime_start_round_cards_to_places(places, positions, position_base
         let image_id = place+'_fake_card_'+index_card;
         //console.log('create fake card for '+image_id);
         const fake_card = game_anime_fake_card_create(position_base, image_id);
-        game_anime_fake_card_anime(fake_card, position_base, positions[place], place, index_card, p1_card);
+        game_anime_fake_card_anime(fake_card, position_base, positions[place], place, index_card, player1_cards);
         p++;
         if (p > 6) {
             //console.log('indexcard '+index_card+' place ' +place +' >6 '); 
@@ -36,7 +36,7 @@ function game_anime_start_round_cards_to_places(places, positions, position_base
     }, 110);
 }
 
-function game_anime_fake_card_anime(fake_card, source, destiny, place, index_card, p1_card) {
+function game_anime_fake_card_anime(fake_card, source, destiny, place, index_card, player1_cards) {
 
     const steps = new Object();
     for (var prop in source) {
@@ -51,14 +51,14 @@ function game_anime_fake_card_anime(fake_card, source, destiny, place, index_car
         i++;
         if (i > 100) { 
             game_anime_play_aleatory_sound('sound_take_card');
-            game_anime_show_distributed_card(fake_card, place, index_card, p1_card);
+            game_anime_show_distributed_card(fake_card, place, index_card, player1_cards);
             clearInterval(step_move); 
         }
     }, 1);
     
 }
 
-function game_anime_show_distributed_card(fake_card, place, index_card, p1_card) {
+function game_anime_show_distributed_card(fake_card, place, index_card, player1_cards) {
     //place é 1 item de ['morto1', 'player4', 'player2', 'morto2', 'player3', 'player1']
     //index_card é o número da carta que está sendo recebida
     //na distribuição inicial, varia de 1 a 11 
@@ -67,30 +67,40 @@ function game_anime_show_distributed_card(fake_card, place, index_card, p1_card)
     const place_holder = document.getElementById('place_'+place);
     if (!place_holder) {
         console.log('place_'+place+' não encontrado !');
-        exit;
-    }
-    if (place == 'morto1' || place == 'morto2') {
-        //se for a primeira carta, troca o source do image
-        if (index_card == 1) {
-            place_holder.src = fake_card.src;
-        }
-        fake_card.remove();
     } else {
-        const container = document.getElementById('area_'+place+'_cards');
-        container.appendChild(fake_card);
+        if (place == 'morto1' || place == 'morto2') {
+            //se for a primeira carta, troca o source do image
+            if (index_card == 1) {
+                place_holder.src = fake_card.src;
+            }
+            fake_card.remove();
+        } else {
+            const container = document.getElementById('area_'+place+'_cards');
+            container.appendChild(fake_card);
 
-        fake_card.classList = place_holder.classList;
-        fake_card.style = '';
-        if (place == 'player4' && index_card == 11) {
-            console.log(container.innerHTML);
+            fake_card.classList = place_holder.classList;
+            fake_card.style = '';
+            if (place == 'player4' && index_card == 11) {
+                console.log(container.innerHTML);
+            }
+            place_holder.style.display = 'none';
+            if (place == 'player1') {
+                const p1_card = player1_cards[index_card - 1];
+                const img_carta = p1_card.face+'-'+p1_card.naipe+'.gif';
+                fake_card.src = 'http://localhost/buraco_php/imgs/cards/modelo02/'+img_carta;
+            }  
+            //try {  game_redesign_cards_in_place(place); }
+            //catch(err) {  document.getElementById('area_team_human_games').innerHTML = err.message; }
         }
-        place_holder.style.display = 'none';
-        if (place == 'player1') {
-            const img_carta = p1_card.face+'-'+p1_card.naipe+'.gif';
-            fake_card.src = 'http://localhost/buraco_php/imgs/cards/modelo02/'+img_carta;
-        }  
-        try {  game_redesign_cards_in_place(place); }
-        catch(err) {  document.getElementById('area_team_human_games').innerHTML = err.message; }
+        if (index_card == 11) {
+            if (place == 'player1') {
+                const cardGroups = design_p1_organize_card_groups(player1_cards);
+                design_p1_redesign(cardGroups);
+                design_vert_redesign(11, 'player2');
+                design_p3_redesign(11);
+                design_vert_redesign(11, 'player4');
+            }
+        }
     }
 }
 

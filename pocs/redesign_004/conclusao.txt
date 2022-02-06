@@ -34,5 +34,10 @@
             atribuir ao innerHTML do div
             define um timeout para checar a altura do div  
                 contra a altura ideal = altura dos containers dos mortos
+    Todos ok
+        poderia reescrever a função de recheck_size
+            para ser a mesma em todos os três tipos
+        mas isso tornaria a leitura do código mais difícil
+
         
 
