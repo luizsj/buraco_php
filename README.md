@@ -486,30 +486,93 @@ Jogo tem
                 como probabilidade de bater se comprar do baralho
             )
     Após comprar as cartas e adicioná-las a lista do jogador atual
+    Fase1: verificar 3 vermelho
         precisa verificar se tem cartas com valor 3 dos naipes ouros ou copas
         porque cada uma dá direito a comprar mais uma do baralho
             que pode inclusive ser outro 3 vermelho
         nesse processo precisa definir que a organização de "jogadas na mesa"
         vai ter estrutura
-            $_Session['cardsOnTable'][team][valor_face][indice_de_grupo] = [card, card, ...];
+            $_Session['cardsOnTable'][team][valor_face][indice_de_grupo]['cards'] = [card, card, ...];
+            $_Session['cardsOnTable'][team][valor_face][indice_de_grupo]['status'] = 'clean' ou 'dirty'
+                esse último é pra verificar rapidamente se tem ou nào coringa
+                sem precisar inspecionar as cartas do grupo
             para cada time, tem valor de face
             dentro de cada valor de face, pode ter mais de um grupo jogado
             e cada grupo jogado tem ncartas, cada uma com valro de face e naipe
             precisa ser com valor de face porque pode ter coringas juntos
             então não pode ser apenas a lista de naipes daquele valor de face
-    OK, agora tem que decidir quais cartas serão jogadas
+
+    Fase2: sobre os jogos que já tem na mesa
         primeiro, examina os jogos do time na mesa, exceto de 3-vermelho
         para cada cada grupo dentro de cada valor de face
             o primeiro grupo sempre é o que tem mais cartas
                 ou igual ao segundo grupo
-                
+            anota quantidade G de grupos
             anota a quantidade Q de cartas no grupo
+            anota o status clean/dirty
             SE tem N cartas na mão daquele valor-face
-                se Q >= 7, não faz nada
-                se Q = 6
-                    se N <= 2
-                    joga todas as cartas naquele grupo
-                Se Q = 6
+                se Q >= 7, 
+                    Se N <= 2
+                        Se G=1
+                            joga a carta nesse grupo
+                        senão 
+                            joga a carta no grupo seguinte
+                    Se N >= 3
+                        cria um grupo novo
+                senão,
+                    Se Q >= 4
+                        Se N <= 7 - Q
+                            joga todas as cartas nesse grupo
+                            porque o outro jogador pode ter cartas 
+                            para completar 7 no grupo
+                    senao, q < 4
+                        Se N > 2
+                            joga todas as cartas nesse grupo
+                        senão
+                            não joga as cartas
+                            guarda o par para a possibilidade 
+                            de comprar o lixo na próxima jogada
+            Fim
+
+    Fase3: Jogos na mesa novos
+        Para cada valor das cartas que tem na mão
+                E NÃO TEM grupos ainda na mesa
+                exceto 3 preto
+                exceto 2 e C
+            N = Número de cartas do valor
+            se N >= 3
+                abre um grupo do valor com essas cartas
+                nem olha para os coringas
+                porque está abrindo um grupo "clean"
+            Se N == 2
+                se tem 1 coringa e não tem jogos "dirty" para colocar esse coringa,
+                abre um grupo "dirty"
+    Fase4: Coringas na mão, colocando os Coringões primeiro e os 2 por último
+        Conta quantos são
+        Se QtTotal na Mão - NC <= 1
+            Joga no máximo NC
+            Porque aí vai bater, vai ficar sem cartas
+        Senão NC = ceil(NC/2)
+            Isto é, joga metade e fica com outra metade na mão
+
+        SE tem jogos dirty na mesa, com menos de 7 cartas
+            Ordena os grupos por quantidade de cartas
+            Percorre o conjunto da maior quantidade para a menor
+            Joga em cada grupo a quantidade até dar 7 no grupo
+            ou esgotar o NC
+    Fase5: Se cartas na mão = 0
+            Se o time ainda não pegou o morto
+                devolve resultado para o front-end
+                com um marcador no json de que vai comprar o morto
+            
+
+            
+
+
+
+
+
+
 
 
 

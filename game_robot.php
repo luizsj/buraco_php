@@ -1,15 +1,16 @@
 <?php
 
 function game_call_player_robot() {
-    $actualPlayer = $_SESSION['nextplayer'];
-    $_SESSION['actualPlay']['player'] = $actualPlayer;
-    $playerCards = $_SESSION['distrib']['player'.$actualPlayer];
+    $gameStatus = $_SESSION['game']['last_status'];
+    $actualPlayer = $gameStatus['nextplayer'];
+    $gameStatus['actualPlay']['player'] = $actualPlayer;
+    $playerCards = $gameStatus['distrib']['player'.$actualPlayer];
         //executa a primeira compra de cartas
         //retorna um array [face][naipe, naipe, naipe], [face][naipe, naipe, naipe], ...
     $playerCardsSorted = game_call_player_robot_buy_cards($actualPlayer, $playerCards);
     $team = ($actualPlayer == 3) ? 'human' : 'robot';
     $playerCardsSorted = game_call_player_robot_decide_3_red($team, $playerCardsSorted);
-    
+
     
 }
 
@@ -28,7 +29,7 @@ function game_call_player_robot_decide_3_red($team, $playerCardsSorted) {
             if (($naipe == 'ouros') or ($naipe == 'copas')) {
                 //se encontra carta 3-vermelho, primeiro joga na mesa
                 $card['naipe'] = $naipe;
-                $_SESSION['cardsOnTable'][$team][3][0][] = $card;
+                $_SESSION['cardsOnTable'][$team][3][0]['cards'][] = $card;
                 //depois atualiza o array de naipes que sobram
                 for ($j=0; $j < count($sobra); $j++) {
                     if ($sobra[$j] == $naipe) {
